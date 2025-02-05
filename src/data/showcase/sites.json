@@ -1,0 +1,33 @@
+[
+  {
+    "title": "Ride Cake",
+    "image": "./images/2-cake.png",
+    "url": "https://ridecake.com"
+  },
+  {
+    "title": "Raev",
+    "image": "./images/1-raev.png",
+    "url": "https://raevbikes.com"
+  },
+  {
+    "title": "Super73",
+    "image": "./images/3-super73.png",
+    "url": "https://super73.com"
+  },
+  {
+    "title": "Onyx",
+    "image": "./images/4-onyx.png",
+    "url": "https://onyx.com"
+  },
+  {
+    "title": "Brekr",
+    "image": "./images/5-brekr.png",
+    "url": "https://brekr.com"
+  },
+  {
+    "title": "Huck Cycles",
+    "image": "./images/6-huck.png",
+    "url": "https://huckcycles.com"
+  }
+
+]
