@@ -8,14 +8,14 @@ a,
 
 .gradient-text {
   @apply bg-clip-text text-transparent;
-  @apply bg-gradient-to-br from-gray-500 via-lime-500 to-green-500;
+  @apply bg-gradient-to-br from-gray-500 via-amber-500 to-amber-700;
 }
 
 /* guides */
 /*purple #4e59bb */
 
 .mdx a:not(.tag) {
-  @apply decoration-[1px] decoration-solid underline-offset-[3px] decoration-secondary underline text-indigo-400;
+  @apply decoration-[1px] decoration-solid underline-offset-[3px] decoration-secondary underline text-amber-400;
 }
 
 .mdx .article-body h1,
