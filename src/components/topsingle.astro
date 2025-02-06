@@ -1,0 +1,56 @@
+---
+const posts = await Astro.glob("../pages/post/**/*.mdx");
+---
+
+<div class="wrapper max-w-6xl">
+  <!-- Loop with images -->
+  {
+    posts
+      .sort((a, b) => {
+        const aDate = new Date(a.frontmatter.pubDate);
+        const bDate = new Date(b.frontmatter.pubDate);
+        return bDate - aDate;
+      })
+      .slice(0, 1)
+      .map((post) => (
+        <li>
+          <a href={"/post/" + post.frontmatter.slug}>
+            <img
+              class=""
+              src={post.frontmatter.image}
+              alt={post.frontmatter.title}
+            />
+            <p class="my-2 font-bold text-gray-950 text-xl">
+              {post.frontmatter.title}
+            </p>
+            <p
+              class="guide-decription my-2 text-gray-950"
+              style="font-size: .8rem;"
+            >
+              {post.frontmatter.description}
+            </p>
+            <p class="text-gray-900">{post.frontmatter.excerpt}</p>
+            <p class="my-2 font-light text-gray-950" style="font-size: .8rem;">
+              {post.frontmatter.pubDate} | Posted
+              {post.frontmatter.pubTime}
+            </p>
+            <p
+              class="guide-decription  my-2 text-gray-900"
+              style="font-size: .7rem;"
+            >
+              &#10711; {post.frontmatter.minutesRead}
+            </p>
+          </a>
+        </li>
+      ))
+  }
+</div>
+
+<style>
+  .wrapper {
+    /* background-color: black; */
+    margin: 0 auto;
+
+    margin: auto;
+  }
+</style>
