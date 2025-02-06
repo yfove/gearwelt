@@ -2,7 +2,7 @@
 const posts = await Astro.glob("../pages/post/**/*.mdx");
 ---
 
-<div class="wrapper max-w-6xl">
+<div class="wrapper mx-auto my-10 max-w-6xl border-2">
   <!-- Loop with images -->
   {
     posts
@@ -13,10 +13,10 @@ const posts = await Astro.glob("../pages/post/**/*.mdx");
       })
       .slice(0, 1)
       .map((post) => (
-        <li>
+        <li class="flex flex-col border-2 border-stone-400 text-center">
           <a href={"/post/" + post.frontmatter.slug}>
             <img
-              class=""
+              class="mb-4 h-auto w-full object-cover"
               src={post.frontmatter.image}
               alt={post.frontmatter.title}
             />
@@ -29,7 +29,7 @@ const posts = await Astro.glob("../pages/post/**/*.mdx");
             >
               {post.frontmatter.description}
             </p>
-            <p class="text-gray-900">{post.frontmatter.excerpt}</p>
+            <p class="px-1 text-gray-900">{post.frontmatter.excerpt}</p>
             <p class="my-2 font-light text-gray-950" style="font-size: .8rem;">
               {post.frontmatter.pubDate} | Posted
               {post.frontmatter.pubTime}
@@ -45,12 +45,3 @@ const posts = await Astro.glob("../pages/post/**/*.mdx");
       ))
   }
 </div>
-
-<style>
-  .wrapper {
-    /* background-color: black; */
-    margin: 0 auto;
-
-    margin: auto;
-  }
-</style>

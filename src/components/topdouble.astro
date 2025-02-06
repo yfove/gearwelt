@@ -3,7 +3,7 @@ const posts = await Astro.glob("../pages/post/**/*.mdx");
 ---
 
 <div
-  class="wrapper horizontalbar m-5 grid max-w-6xl list-none grid-cols-[repeat(auto-fill,minmax(500px,1fr))] gap-8 text-gray-100"
+  class="wrapper horizontalbar mx-auto my-10 grid max-w-6xl list-none grid-cols-[repeat(auto-fill,minmax(500px,1fr))] gap-8 text-gray-100"
 >
   <!-- Loop with images -->
   {
@@ -15,7 +15,7 @@ const posts = await Astro.glob("../pages/post/**/*.mdx");
       })
       .slice(0, 4)
       .map((post) => (
-        <li class="flex flex-col">
+        <li class="flex flex-col border-2 border-stone-400 text-center">
           <a href={"/post/" + post.frontmatter.slug}>
             <img
               class="mb-4 h-64 w-full object-cover"
@@ -47,12 +47,3 @@ const posts = await Astro.glob("../pages/post/**/*.mdx");
       ))
   }
 </div>
-
-<style>
-  .wrapper {
-    /* background-color: black; */
-    margin: 0 auto;
-
-    margin: auto;
-  }
-</style>
