@@ -14,6 +14,7 @@ import Topsingle from "~/components/topsingle.astro";
 import Topdouble from "~/components/topdouble.astro";
 import Topnews from "~/components/topnews.astro";
 import Topguides from "~/components/topguides.astro";
+import Adhorizontal from "~/components/adhorizontal.astro";
 
 const { generator, site } = Astro;
 const image = new URL("social.jpg", site);
@@ -48,6 +49,7 @@ const description = "Welcome to EbikeOfficial";
     <div class="bg-white px-2">
       <Topsingle />
       <Topdouble />
+      <Adhorizontal />
       <Topnews />
       <Horizontalbar />
       <Topguides />
