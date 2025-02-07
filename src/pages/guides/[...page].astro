@@ -21,7 +21,7 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
     }
 
     flex span {
-      background: #818cf8;
+      background: #black;
       border-radius: 0.5rem;
       padding: 3px 6px;
       margin: 5px 0px;
@@ -31,14 +31,14 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
     .blog li > .card {
       background: black;
       // border: 2px solid #818cf8;
-      color: #818cf8;
+      color: #black;
       border-radius: 0.3rem;
     }
 
     body .pagination {
       a:hover,
       & a:focus-visible {
-        background-color: #818cf8;
+        background-color: #black;
       }
     }
   </style>
@@ -95,7 +95,7 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
       </div>
       <div
         class="paginate mt-12 grid place-content-center"
-        style="color:#818cf8;"
+        style="color:#black;"
       >
         <Pagination
           firstPage={page.url.prev ? "/blog" : null}

@@ -35,166 +35,59 @@ export const prerender = true;
     <!-- <title>{pageTitle}</title> -->
   </head>
 
-  <body class="h-min">
+  <body class="h-min bg-white text-white">
     <Header />
-    <div class="blog-container pt-10">
-      <main class="font-normal tracking-wider text-gray-900">
-        <a href="javascript:history.back()" class="back-button"
+    <div
+      class="mx-auto flex min-h-screen max-w-5xl rounded-lg border p-5 pt-10 shadow-md"
+    >
+      <main class="flex-3 font-normal tracking-wider text-gray-900">
+        <a href="javascript:history.back()" class="text-black"
           >Back to Previous</a
         >
-        <a style="color: #000">| {title}</a>
+        <a class="text-black">| {title}</a>
         <article class="mdx">
-          <div class="article-head">
-            <h1
-              class="title gradient-text base font-extrabold tracking-tighter"
-            >
-              {title}
-            </h1>
-            <small class="text-gray-400">Written by: &#x270E; {author}</small>
-
-            <small class="float-right text-gray-900"
-              >&#10711; {minutesRead}
-              <PostViews slug={slug} />
-            </small>
+          <div class="flex flex-col items-start space-y-1">
+            <h1 class="font-extrabold tracking-tighter text-4xl">{title}</h1>
+            <div class="flex w-full justify-between text-gray-900">
+              <small class="text-stone-500">Written by: &#x270E; {author}</small
+              >
+              <small class="text-right"
+                >&#10711; {minutesRead} <PostViews slug={slug} /></small
+              >
+            </div>
           </div>
+
           <br />
           <div class="article-body">
-            {image && <img width={720} height={360} src={image} alt="" />}
-            <small class="article-small">
+            {image && <img class="w-full " src={image} alt="" />}
+            <small class="text-black">
               Published on: {pubTime} •
-              {pubDate && <time>{pubDate}</time>}
+              {pubDate && <time class="mt-2 inline-block">{pubDate}</time>}
               {credit}
             </small>
-            <hr />
+            <hr class="my-4 border-t-2" />
             <slot class="mdx" />
           </div>
         </article>
         <br />
-        <a href="javascript:history.back()" class="back-button"
+        <a href="javascript:history.back()" class="text-black"
           >Back to Previous</a
         >
         <span>|</span>
-        <a href="/" class="back-button">Back to Home</a>
+        <a href="/" class="text-black">Back to Home</a>
       </main>
-      <div class="sidebar-container">
+      <div class="sidebar-container flex flex-1 flex-col">
         <Sidebar />
       </div>
     </div>
-    <!-- accordian component -->
+
+    <!-- Accordion component -->
     <Accordian />
 
-    <!-- call to action social media component -->
+    <!-- Call to action social media component -->
     <Cta />
     <Horizontalbar2 />
     <Horizontalbar />
-
-    <style>
-      .mdx a {
-        font-weight: bold;
-        color: red;
-        text-decoration: underline;
-      }
-
-      .title {
-        font-size: 2.4em;
-        margin: 0.25em 0 0;
-      }
-
-      hr {
-        border-top: 1px solid #000;
-        margin: 0.6rem 0;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      html {
-        min-height: 100vh;
-        height: 100%;
-      }
-
-      body {
-        height: 100%;
-        color: white;
-        background: white;
-      }
-
-      .blog-container {
-        display: flex;
-        min-height: 100vh;
-        /* margin: 7rem; */
-      }
-
-      main {
-        flex: 3;
-      }
-
-      .sidebar-container {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        /* padding: 0 0 0 2rem; */
-      }
-
-      time {
-        display: inline-block;
-        margin-top: 10px;
-      }
-
-      .back-button {
-        color: #000;
-      }
-
-      .article-small {
-        color: #000;
-        /* color: #f472b6; */
-      }
-
-      h1 {
-        font-size: 3rem;
-      }
-
-      .blog-container {
-        max-width: 1000px;
-        margin: 0 auto;
-        /* Center the container horizontally */
-        padding: 20px;
-        /* border: 2px solid #818cf8; */
-        border-radius: 0.4rem;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        /* Optional: Add a box shadow for a subtle effect */
-      }
-
-      /* Media Query for Larger Screens */
-      @media (min-width: 769px) {
-      }
-
-      /* Media Query for Smaller Screens (Mobile) */
-      @media (max-width: 1000px) {
-        article h1 {
-          /* font-size: 2rem; */
-        }
-
-        article {
-          margin: 0;
-        }
-      }
-
-      @media (max-width: 1000px) {
-        .container {
-          flex-direction: column;
-        }
-
-        main {
-          flex: 4;
-        }
-
-        .sidebar-container {
-          display: none;
-        }
-      }
-    </style>
   </body>
-  <Footer />
 </html>
+<Footer />

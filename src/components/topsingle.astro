@@ -18,7 +18,7 @@ const posts = await Astro.glob("../pages/post/**/*.mdx");
         <Cardcontent
           post={post}
           key={post.frontmatter.slug}
-          imageClass="h-73"
+          imageClass="h-auto"
         />
       ))
   }

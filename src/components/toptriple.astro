@@ -31,12 +31,12 @@ const posts = await Astro.glob("../pages/post/**/*.mdx");
                 &#10711; {post.frontmatter.minutesRead}
               </p>
             </p>
-            <p
+            {/* <p
               class="guide-decription m-2 text-gray-950"
               style="font-size: .8rem;"
             >
               {post.frontmatter.description}
-            </p>
+            </p> */}
             <p class="px-2 text-gray-900">{post.frontmatter.excerpt}</p>
             <p class="my-2 font-light text-gray-950" style="font-size: .8rem;">
               {post.frontmatter.pubDate} | Posted
