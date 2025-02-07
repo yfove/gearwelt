@@ -1,0 +1,115 @@
+---
+import { Pagination } from "accessible-astro-components"; // Import Pagination here
+
+export interface Props {
+  page: any;
+  posts: any;
+}
+
+const { page } = Astro.props;
+
+// Calculate total pages once
+const totalPages = Math.ceil(page.total / page.size);
+const firstPage = page.url.prev ? "/post" : null;
+const previousPage = page.url.prev || null;
+const nextPage = page.url.next || null;
+const lastPage = page.url.next ? `/post/${totalPages}` : null;
+---
+
+<section>
+  <div class="blog m-4" style="color:black;">
+    <p class="text-sm">
+      <em>
+        Post {page.start + 1} through {page.end + 1} of {page.total} total posts
+      </em>
+    </p>
+
+    <ul
+      class="my-3 grid gap-5 sm:grid-cols-[repeat(auto-fill,minmax(380px,1fr))]"
+    >
+      {
+        page.data && page.data.length > 0 ? (
+          page.data.map((post) => (
+            <li
+              class="flex flex-col border-2 border-stone-400 text-center"
+              key={post.frontmatter.slug}
+            >
+              <a href={`/post/${post.frontmatter.slug}`}>
+                <img
+                  class="h-64 w-full object-cover"
+                  src={post.frontmatter.image}
+                  alt={post.frontmatter.title}
+                  loading="lazy"
+                />
+
+                {/* Render Tags */}
+                <div class="mt-2 space-x-2">
+                  {post.frontmatter.tags?.map((tag, index) => (
+                    <span key={index} class="text-sm">
+                      <a
+                        href={`/tags/${tag}`}
+                        class="text-stone-400 hover:underline"
+                      >
+                        {tag}
+                      </a>
+                      {index < post.frontmatter.tags.length - 1 && (
+                        <span class="mx-1 text-gray-400">|</span>
+                      )}
+                    </span>
+                  ))}
+                </div>
+
+                <p class="my-2 font-bold text-gray-950 text-xl">
+                  {post.frontmatter.title}
+                </p>
+                <p class="guide-description small-text my-2 text-gray-950">
+                  {post.frontmatter.description}
+                </p>
+                <p class="px-1 text-gray-900">{post.frontmatter.excerpt}</p>
+                <p class="small-text my-2 font-light text-gray-950">
+                  {post.frontmatter.pubDate} | Posted {post.frontmatter.pubTime}
+                </p>
+                <p class="guide-description small-text my-2 text-gray-900">
+                  &#10711; {post.frontmatter.minutesRead}
+                </p>
+
+                <div class="my-3">
+                  <a
+                    href={`/post/${post.frontmatter.slug}`}
+                    class="text-md mx-2 font-serif italic text-amber-600 hover:text-gray-700 hover:underline"
+                  >
+                    Read
+                  </a>
+                  <span class="text-md mx-2 font-serif italic text-gray-600">
+                    or
+                  </span>
+                  <a
+                    href={post.frontmatter.buyLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-md mx-2 font-serif italic text-amber-600 hover:text-gray-700 hover:underline"
+                  >
+                    Buy
+                  </a>
+                </div>
+              </a>
+            </li>
+          ))
+        ) : (
+          <li class="text-center text-gray-500">No posts available</li>
+        )
+      }
+    </ul>
+  </div>
+
+  <div class="mt-12 grid place-content-center">
+    <Pagination
+      firstPage={firstPage}
+      previousPage={previousPage}
+      nextPage={nextPage}
+      lastPage={lastPage}
+      currentPage={page.currentPage}
+      totalPages={totalPages}
+    />
+  </div>
+</section>

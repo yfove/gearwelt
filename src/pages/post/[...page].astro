@@ -3,6 +3,7 @@ import BlogLayout from "../../layouts/BlogLayout.astro";
 import { Pagination } from "accessible-astro-components";
 import Alltags from "~/components/alltags.astro";
 import SearchBar from "~/components/SearchBar.astro";
+import PaginatedComponent from "~/components/PaginatedComponent.astro";
 
 export async function getStaticPaths({ paginate }) {
   const post = await Astro.glob("./*.mdx");
@@ -14,22 +15,11 @@ export async function getStaticPaths({ paginate }) {
     return bDate - aDate;
   });
 
-  return paginate(sortedPosts, { pageSize: 9, page: 1 });
+  return paginate(sortedPosts, { pageSize: 6, page: 1 });
 }
 
 const { page } = Astro.props;
 ---
-
-<head>
-  <style lang="scss" is:global>
-    body .pagination {
-      a:hover,
-      & a:focus-visible {
-        background-color: #000;
-      }
-    }
-  </style>
-</head>
 
 <BlogLayout
   title="Featured Articles"
@@ -41,105 +31,14 @@ const { page } = Astro.props;
       <SearchBar />
     </div>
 
-    <div class="heading text-gray-900">
+    <div class="heading mx-4 text-gray-900">
       <a href="/post">
         <h2>Archive</h2>
       </a>
       <hr style="width:100%;" />
     </div>
-    <div class="blog blog-container p-1" style="color:#000;">
-      <p class="text-sm">
-        <em
-          >Post {page.start + 1} through {page.end + 1} of {page.total} total posts</em
-        >
-      </p>
-      <ul
-        class="wrapper horizontalbar mx-auto my-10 my-3 grid max-w-6xl list-none grid-cols-[repeat(auto-fill,minmax(500px,1fr))] gap-8 text-gray-100"
-      >
-        {
-          page.data.map((post) => (
-            <li class="flex flex-col border-2 border-stone-400 text-center">
-              <a href={"/post/" + post.frontmatter.slug}>
-                <img
-                  class=" h-64 w-full object-cover"
-                  src={post.frontmatter.image}
-                  alt={post.frontmatter.title}
-                />
-                <div class="mt-2 space-x-2">
-                  {post.frontmatter.tags &&
-                    post.frontmatter.tags.map((tag, index) => (
-                      <span key={index} class="text-sm">
-                        <a
-                          href={`/tags/${tag}`}
-                          class="text-stone-400 hover:underline"
-                        >
-                          {tag}
-                        </a>
-                        {index < post.frontmatter.tags.length - 1 && (
-                          <span class="mx-1 text-gray-400">|</span>
-                        )}
-                      </span>
-                    ))}
-                </div>
-                <p class="my-2 font-bold text-gray-950 text-xl">
-                  {post.frontmatter.title}
-                </p>
-                <p
-                  class="guide-decription my-2 text-gray-950"
-                  style="font-size: .8rem;"
-                >
-                  {post.frontmatter.description}
-                </p>
-                <p class="px-1 text-gray-900">{post.frontmatter.excerpt}</p>
-                <p
-                  class="my-2 font-light text-gray-950"
-                  style="font-size: .8rem;"
-                >
-                  {post.frontmatter.pubDate} | Posted
-                  {post.frontmatter.pubTime}
-                </p>
-                <p
-                  class="guide-decription  my-2 text-gray-900"
-                  style="font-size: .7rem;"
-                >
-                  &#10711; {post.frontmatter.minutesRead}
-                </p>
-                <div class="my-3">
-                  <a
-                    href={"/post/" + post.frontmatter.slug}
-                    class="text-md mx-2 font-serif italic text-amber-600 hover:text-gray-700 hover:underline"
-                  >
-                    Read
-                  </a>
-                  <span class="text-md mx-2 font-serif italic text-gray-600">
-                    or
-                  </span>
-                  <a
-                    href={post.frontmatter.buyLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-md mx-2 font-serif italic text-amber-600 hover:text-gray-700 hover:underline"
-                  >
-                    Buy
-                  </a>
-                </div>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-      <div class="mt-12 grid place-content-center">
-        <Pagination
-          firstPage={page.url.prev ? "/post" : null}
-          previousPage={page.url.prev ? page.url.prev : null}
-          nextPage={page.url.next ? page.url.next : null}
-          lastPage={page.url.next
-            ? `/post/${Math.ceil(page.total / page.size)}`
-            : null}
-          currentPage={page.currentPage}
-          totalPages={Math.ceil(page.total / page.size)}
-        />
-      </div>
-    </div>
+
+    <!-- Use the PaginatedPosts component here -->
+    <PaginatedComponent page={page} posts={page.data} />
   </section>
 </BlogLayout>
