@@ -1,7 +1,7 @@
 ---
 import Header from "../components/header4.astro";
 import Footer from "../components/footer2.astro";
-import HorizontalbarGuides from "~/components/horizontalbar-guides.astro";
+import HorizontalbarGuides from "~/components/guidesmin.astro";
 
 import type { MarkdownLayoutProps } from "astro";
 
@@ -14,7 +14,10 @@ const { title, description, author, date, url } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
     <Header />
   </head>
   <body>

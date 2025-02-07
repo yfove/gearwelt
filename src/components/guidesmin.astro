@@ -3,15 +3,17 @@ const guides = await Astro.glob("../pages/guides/**/*.mdx");
 ---
 
 <div class="mx-auto my-10 max-w-6xl">
-  <div class="recent-posts m-3">
-    <div class="heading mx-3 mb-4">
+  <div class="recent-posts">
+    <div class="heading mb-4">
       <a href="/guides">
         <h2 class="text-center text-black">Ultimate Gear Guide</h2>
       </a>
       <hr class="w-full border-t border-black" />
     </div>
-    <div class="grid grid-cols-[repeat(5,minmax(0,1fr))] gap-8">
-      <!-- Loop with images -->
+    <div
+      class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
+    >
+      {/* Loop with images */}
       {
         guides
           .reverse()
@@ -19,13 +21,13 @@ const guides = await Astro.glob("../pages/guides/**/*.mdx");
           .map((guide) => (
             <div key={guide.frontmatter.slug} class="p-4">
               <a href={"/guides/" + guide.frontmatter.slug} class="block">
-                <p class="font-semibold text-black text-lg">
+                <p class="font-semibold text-black text-lg sm:text-base">
                   {guide.frontmatter.title}
                 </p>
-                <p class="text-black text-sm">
+                <p class="text-black text-sm sm:text-xs">
                   {guide.frontmatter.description}
                 </p>
-                <small class="text-black text-xs">
+                <small class="sm:text-xxs text-black text-xs">
                   {guide.frontmatter.pubDate}
                 </small>
               </a>

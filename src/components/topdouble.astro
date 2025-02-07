@@ -3,7 +3,7 @@ const posts = await Astro.glob("../pages/post/**/*.mdx");
 ---
 
 <div
-  class="wrapper horizontalbar mx-auto my-10 grid max-w-6xl list-none grid-cols-[repeat(auto-fill,minmax(500px,1fr))] gap-8 text-gray-100"
+  class="wrapper horizontalbar mx-auto my-10 grid max-w-6xl list-none grid-cols-1 gap-8 text-gray-100 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2"
 >
   <!-- Loop with images -->
   {

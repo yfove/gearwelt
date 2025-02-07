@@ -4,8 +4,7 @@ import Compatibility from "~/components/compatibility.astro";
 import Features from "~/components/features.astro";
 import Footer from "~/components/footer2.astro";
 import Header4 from "~/components/header4.astro";
-import Horizontalbar from "~/components/horizontalbar.astro";
-import Horizontalbar2 from "~/components/horizontalbar-guides.astro";
+import Toptriple from "~/components/toptriple.astro";
 import "~/styles/index.css";
 import Hero from "~/components/hero.astro";
 import Hero2 from "~/components/heromin.astro";
@@ -15,6 +14,7 @@ import Topdouble from "~/components/topdouble.astro";
 import Topnews from "~/components/topnews.astro";
 import Topguides from "~/components/topguides.astro";
 import Adhorizontal from "~/components/adhorizontal.astro";
+import Guidesmin from "~/components/guidesmin.astro";
 
 const { generator, site } = Astro;
 const image = new URL("social.jpg", site);
@@ -39,6 +39,16 @@ const description = "Welcome to EbikeOfficial";
     <meta property="og:image" content={image} />
     <meta property="og:url" content={site} />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Josefin+Sans:ital,wght@1,300&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="h-full bg-white selection:bg-secondary selection:text-white">
     <!-- <Header /> -->
@@ -46,15 +56,14 @@ const description = "Welcome to EbikeOfficial";
     <div class="space-y-14">
       <Hero2 />
     </div>
-    <div class="bg-white">
+    <div class="mx-2 bg-white">
       <Topsingle />
       <Adhorizontal />
       <Topdouble />
       <Topnews />
-      <Horizontalbar />
+      <Toptriple />
       <Topguides />
-      <Horizontalbar2 />
-      <Contentcta />
+      <Guidesmin />
       <!-- <Splash class="h-min" /> -->
       <!-- <Intro /> -->
       <!-- <Features /> -->
@@ -62,6 +71,7 @@ const description = "Welcome to EbikeOfficial";
       <!-- <Compatibility /> -->
       <!-- <Showcase /> -->
     </div>
+    <Contentcta />
     <Footer />
   </body>
 </html>
