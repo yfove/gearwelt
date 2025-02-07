@@ -1,5 +1,5 @@
 /* TODO: consider creating <Button> and <GradientText> components */
-a,
+/* a, */
 .btn {
   @apply transition-colors duration-200;
   @apply hover:text-secondary;
