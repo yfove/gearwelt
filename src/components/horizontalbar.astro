@@ -22,22 +22,22 @@ const posts = await Astro.glob("../pages/post/**/*.mdx");
               src={post.frontmatter.image}
               alt={post.frontmatter.title}
             />
-            <p class="my-2 font-bold text-gray-950 text-xl">
+            <p class="m-1 font-bold text-gray-950 text-xl">
               {post.frontmatter.title}
+              <p
+                class="guide-decription  my-2 text-gray-900"
+                style="font-size: .7rem;"
+              >
+                &#10711; {post.frontmatter.minutesRead}
+              </p>
             </p>
             <p
-              class="guide-decription  my-2 text-gray-900"
-              style="font-size: .7rem;"
-            >
-              &#10711; {post.frontmatter.minutesRead}
-            </p>
-            <p
-              class="guide-decription my-2 text-gray-950"
+              class="guide-decription m-2 text-gray-950"
               style="font-size: .8rem;"
             >
               {post.frontmatter.description}
             </p>
-            <p class="px-5 text-gray-900">{post.frontmatter.excerpt}</p>
+            <p class="px-2 text-gray-900">{post.frontmatter.excerpt}</p>
             <p class="my-2 font-light text-gray-950" style="font-size: .8rem;">
               {post.frontmatter.pubDate} | Posted
               {post.frontmatter.pubTime}

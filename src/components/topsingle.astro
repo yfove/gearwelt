@@ -16,12 +16,12 @@ const posts = await Astro.glob("../pages/post/**/*.mdx");
         <li class="flex flex-col border-2 border-stone-400 text-center">
           <a href={"/post/" + post.frontmatter.slug}>
             <img
-              class="mb-4 h-auto w-full object-cover"
+              class=" h-auto w-full object-cover"
               src={post.frontmatter.image}
               alt={post.frontmatter.title}
             />
             <!-- Display tags above the title with dividers and links -->
-            <div class="mb-2 space-x-2">
+            <div class="mt-2 space-x-2">
               {post.frontmatter.tags && post.frontmatter.tags.map((tag, index) => (
                 <span key={index} class="text-sm">
                   <a

@@ -18,25 +18,25 @@ const posts = await Astro.glob("../pages/post/**/*.mdx");
         <li class="flex flex-col border-2 border-stone-400 text-center">
           <a href={"/post/" + post.frontmatter.slug}>
             <img
-              class="mb-4 h-64 w-full object-cover"
+              class=" h-64 w-full object-cover"
               src={post.frontmatter.image}
               alt={post.frontmatter.title}
             />
-             <!-- Display tags above the title with dividers and links -->
-            <div class="mb-2 space-x-2">
-              {post.frontmatter.tags && post.frontmatter.tags.map((tag, index) => (
-                <span key={index} class="text-sm">
-                  <a
-                    href={`/tags/${tag}`}
-                    class="text-stone-400 hover:underline"
-                  >
-                    {tag}
-                  </a>
-                  {index < post.frontmatter.tags.length - 1 && (
-                    <span class="mx-1 text-gray-400">|</span> 
-                  )}
-                </span>
-              ))}
+            <div class="mt-2 space-x-2">
+              {post.frontmatter.tags &&
+                post.frontmatter.tags.map((tag, index) => (
+                  <span key={index} class="text-sm">
+                    <a
+                      href={`/tags/${tag}`}
+                      class="text-stone-400 hover:underline"
+                    >
+                      {tag}
+                    </a>
+                    {index < post.frontmatter.tags.length - 1 && (
+                      <span class="mx-1 text-gray-400">|</span>
+                    )}
+                  </span>
+                ))}
             </div>
             <p class="my-2 font-bold text-gray-950 text-xl">
               {post.frontmatter.title}
@@ -47,7 +47,7 @@ const posts = await Astro.glob("../pages/post/**/*.mdx");
             >
               {post.frontmatter.description}
             </p>
-            <p class="text-gray-900">{post.frontmatter.excerpt}</p>
+            <p class="px-1 text-gray-900">{post.frontmatter.excerpt}</p>
             <p class="my-2 font-light text-gray-950" style="font-size: .8rem;">
               {post.frontmatter.pubDate} | Posted
               {post.frontmatter.pubTime}
