@@ -1,5 +1,10 @@
 ---
 // import { Icon } from ".";
+const allPosts = await Astro.glob("../pages/post/**/*.mdx"); // Adjust the path if necessary
+const tags = [
+  ...new Set(allPosts.flatMap((post) => post.frontmatter.tags || [])),
+];
+const limitedTags = tags.slice(0, 28);
 ---
 
 <nav
@@ -61,25 +66,22 @@
               d="m19.5 8.25-7.5 7.5-7.5-7.5"></path>
           </svg>
         </button>
+
         <div
-          class="dropdown-menu absolute hidden w-48 rounded-b-lg bg-zinc-950 pb-2 text-white"
+          class="dropdown-menu absolute grid hidden w-72 grid-cols-2 gap-1 rounded-b-lg bg-zinc-950 pb-2 text-white"
         >
-          <a href="/tags/Trends" class="block px-6 py-2 hover:bg-zinc-800"
-            >Trends</a
-          >
-          <a href="/tags/Urbanism" class="block px-6 py-2 hover:bg-zinc-800"
-            >Urbanism</a
-          >
-          <a href="/tags/Exploration" class="block px-6 py-2 hover:bg-zinc-800"
-            >Exploration</a
-          >
-          <a href="/tags/Health" class="block px-6 py-2 hover:bg-zinc-800"
-            >Health</a
-          >
-          <a
-            href="/tags/Micromobility"
-            class="block px-6 py-2 hover:bg-zinc-800">Micromobility</a
-          >
+          {
+            // Dynamically loop through the first 12 tags and create a link for each tag
+            limitedTags.map((tag) => (
+              <a
+                key={tag}
+                href={`/tags/${tag}`}
+                class="block px-6 py-2 hover:bg-zinc-800"
+              >
+                {tag}
+              </a>
+            ))
+          }
         </div>
       </div>
       <a href="/guides" class="block px-3 py-2">Guides</a>

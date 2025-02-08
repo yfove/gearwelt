@@ -25,7 +25,7 @@ const maxVisibleTags = 3;
   <!-- If there are more than maxVisibleTags tags, show the 'More' button -->
   {
     tags.length > maxVisibleTags && (
-      <div class="relative z-50">
+      <div class="relative z-10">
         <!-- 'More' button styled as a tag -->
         <button
           id="dropdownToggle"
@@ -35,7 +35,7 @@ const maxVisibleTags = 3;
         </button>
 
         <!-- Dropdown content with remaining tags -->
-        <div id="dropdownContent" class="dropdown-content absolute z-50 mt-1 hidden w-full rounded-xl border-2 border-stone-900 bg-white p-2 shadow-lg max-h-84 overflow-y-auto">
+        <div id="dropdownContent" class="dropdown-content absolute z-10 mt-1 hidden w-full rounded-xl border-2 border-stone-900 bg-white p-2 shadow-lg max-h-84 overflow-y-auto">
           {tags.slice(maxVisibleTags).map((tag) => (
             <p
               key={tag}
