@@ -59,13 +59,13 @@ const lastPage = page.url.next ? `/post/${totalPages}` : null;
                   ))}
                 </div>
 
-                <p class="my-2 font-bold text-gray-950 text-xl">
+                <p class="my-2 px-3 font-bold text-gray-950 text-xl">
                   {post.frontmatter.title}
                 </p>
-                <p class="guide-description small-text my-2 text-gray-950">
+                {/* <p class="guide-description small-text my-2 text-gray-950">
                   {post.frontmatter.description}
-                </p>
-                <p class="px-1 text-gray-900">{post.frontmatter.excerpt}</p>
+                </p> */}
+                <p class="px-3 text-gray-900">{post.frontmatter.excerpt}</p>
                 <p class="small-text my-2 font-light text-gray-950">
                   {post.frontmatter.pubDate} | Posted {post.frontmatter.pubTime}
                 </p>

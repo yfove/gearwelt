@@ -27,7 +27,7 @@ const { post, imageClass = "" } = Astro.props;
     }
   </div>
   <a href={"/post/" + post.frontmatter.slug} class="flex flex-col">
-    <p class="my-2 font-bold text-gray-950 text-xl">
+    <p class="my-2 px-3 font-bold text-gray-950 text-xl">
       {post.frontmatter.title}
     </p>
     {
@@ -38,7 +38,7 @@ const { post, imageClass = "" } = Astro.props;
         {post.frontmatter.description}
       </p> */
     }
-    <p class="px-1 text-gray-900">{post.frontmatter.excerpt}</p>
+    <p class="px-3 text-gray-900">{post.frontmatter.excerpt}</p>
     <p class="my-2 font-light text-gray-950" style="font-size: .8rem;">
       {post.frontmatter.pubDate} | Posted {post.frontmatter.pubTime}
     </p>
