@@ -1,6 +1,5 @@
 ---
 import BlogLayout from "../../layouts/BlogLayout.astro";
-import { Pagination } from "accessible-astro-components";
 import Alltags from "~/components/alltags.astro";
 import SearchBar from "~/components/SearchBar.astro";
 import PaginatedComponent from "~/components/PaginatedComponent.astro";
@@ -25,13 +24,13 @@ const { page } = Astro.props;
   title="Featured Articles"
   description="Our featured articles cover all the latest developments, trends, and innovations in the eBike industry. From cutting-edge technology to new product releases, we cover everything that enthusiasts, riders, manufacturers, and everyone interested in the future of sustainable transportation should be tracking."
 >
-  <section>
+  <section class="mx-auto max-w-6xl">
     <div class="tags">
       <Alltags />
       <SearchBar />
     </div>
 
-    <div class="heading mx-4 text-gray-900">
+    <div class="heading text-gray-900">
       <a href="/post">
         <h2>Archive</h2>
       </a>

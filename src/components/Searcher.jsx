@@ -36,7 +36,7 @@ function Search({ searchList }) {
         Search
       </label>
       <div className="relative ">
-        <div className="pointer-events-none absolute inset-y-0 left-0 m-3 flex items-center pl-3">
+        <div className="pointer-events-none absolute inset-y-0 left-0 my-3 flex items-center pl-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="icon icon-tabler icon-tabler-search"
@@ -54,19 +54,19 @@ function Search({ searchList }) {
             <line x1={21} y1={21} x2={15} y2={15}></line>
           </svg>
         </div>
-        <div class="max-md:flex max-md:justify-center">
+        <div class="">
           <input
             type="text"
             id="search"
             value={query}
             onChange={handleOnSearch}
-            class="m-4 block rounded-lg border-2 border-gray-800 p-2 
-                pl-10 
-                text-gray-400 text-sm
-                focus:border-gray-700 
+            class="my-4 block w-full rounded-lg border-2 border-gray-800 
+                p-2 
+                pl-10 text-gray-400
+                text-sm 
+                focus:border-gray-700
                 focus:outline-none
                 focus:ring-gray-700
-                max-sm:w-full
                 lg:w-3/4"
             placeholder="Search for anything..."
           />

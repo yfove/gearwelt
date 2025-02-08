@@ -6,6 +6,7 @@ import { Pagination } from "accessible-astro-components";
 import { Card } from "accessible-astro-components";
 import Alltags from "~/components/alltags.astro";
 import SearchBar from "~/components/SearchBar.astro";
+import Cardcontent from "~/components/_cardcontent.astro";
 
 export async function getStaticPaths() {
   const allPosts = await Astro.glob("../../pages/**/**/*.mdx");
@@ -47,101 +48,30 @@ const filteredPosts = posts.filter((post) =>
   title={tag}
   description="Our featured articles cover all the latest developments, trends, and innovations in the eBike industry. From cutting-edge technology to new product releases, we cover everything that enthusiasts, riders, manufacturers, and everyone interested in the future of sustainable transportation should be tracking."
 >
-  <div class=""><Alltags /></div>
-  <div><SearchBar /></div>
-  <div class="layout">
-    <div class="title-heading"></div>
+  <section class="mx-auto max-w-6xl">
+    <div class=""><Alltags /></div>
+    <div><SearchBar /></div>
+    <div class="layout">
+      <div class="title-heading"></div>
 
-    <div class="tag-grid grid-container">
-      {
-        filteredPosts.map((post) => (
-          <li class="flex flex-col border-2 border-stone-400 text-center">
-            <a href={"/post/" + post.frontmatter.slug}>
-              <img
-                class=" h-64 w-full object-cover"
-                src={post.frontmatter.image}
-                alt={post.frontmatter.title}
-              />
-              <div class="mt-2 space-x-2">
-                {post.frontmatter.tags &&
-                  post.frontmatter.tags.map((tag, index) => (
-                    <span key={index} class="text-sm">
-                      <a
-                        href={`/tags/${tag}`}
-                        class="text-stone-400 hover:underline"
-                      >
-                        {tag}
-                      </a>
-                      {index < post.frontmatter.tags.length - 1 && (
-                        <span class="mx-1 text-gray-400">|</span>
-                      )}
-                    </span>
-                  ))}
-              </div>
-              <p class="my-2 font-bold text-gray-950 text-xl">
-                {post.frontmatter.title}
-              </p>
-              <p
-                class="guide-decription my-2 text-gray-950"
-                style="font-size: .8rem;"
-              >
-                {post.frontmatter.description}
-              </p>
-              <p class="px-1 text-gray-900">{post.frontmatter.excerpt}</p>
-              <p
-                class="my-2 font-light text-gray-950"
-                style="font-size: .8rem;"
-              >
-                {post.frontmatter.pubDate} | Posted
-                {post.frontmatter.pubTime}
-              </p>
-              <p
-                class="guide-decription  my-2 text-gray-900"
-                style="font-size: .7rem;"
-              >
-                &#10711; {post.frontmatter.minutesRead}
-              </p>
-              <div class="my-3">
-                <a
-                  href={"/post/" + post.frontmatter.slug}
-                  class="text-md mx-2 font-serif italic text-amber-600 hover:text-gray-700 hover:underline"
-                >
-                  Read
-                </a>
-                <span class="text-md mx-2 font-serif italic text-gray-600">
-                  or
-                </span>
-                <a
-                  href={post.frontmatter.buyLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-md mx-2 font-serif italic text-amber-600 hover:text-gray-700 hover:underline"
-                >
-                  Buy
-                </a>
-              </div>
-            </a>
-          </li>
-        ))
-      }
+      <div
+        class="wrapper horizontalbar mx-auto my-10 grid grid-cols-1 gap-8 text-gray-100 sm:grid-cols-2"
+      >
+        {
+          filteredPosts.map((post) => (
+            <Cardcontent
+              post={post}
+              key={post.frontmatter.slug}
+              imageClass="h-64"
+            />
+          ))
+        }
+      </div>
     </div>
-  </div>
+  </section>
 </BlogLayout>
 
 <style lang="scss" is:global>
-  .tag-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-    text-decoration: none;
-    grid-gap: 2rem;
-    list-style: none;
-    margin: 0 auto;
-    /* background-color: black; */
-    max-width: 1152px;
-    color: var(--color-primary);
-    padding: 1rem;
-  }
-
   .card .card__image {
     height: 13rem;
   }

@@ -6,86 +6,45 @@ import Horizontalbar2 from "../components/guidesmin.astro";
 import Cta from "../components/cta.astro";
 import Footer from "../components/footer2.astro";
 const { title, description } = Astro.props || {};
-import Alltags from "~/components/alltags.astro";
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
-      rel="stylesheet"
-    />
   </head>
+
   <BaseHead
     title={"Articles"}
     description="A page to display all our blog posts"
   />
 
-  <style>
-    body {
-      margin: 0;
-      width: 100%;
-    }
-
-    .layout {
-      max-width: 1152px;
-      margin: 0 auto;
-    }
-
-    .layout h1 {
-      font-size: 3rem;
-      /* text-align: center; */
-    }
-
-    /* Media query for smaller screens */
-    @media (max-width: 1000px) {
-      .layout {
-        padding: 0.5rem; /* Reduce padding for smaller screens */
-      }
-
-      .title-heading h1 {
-        font-size: 4rem; /* Adjust the font size for smaller screens */
-        line-height: 1.6ch;
-        text-align: center;
-        margin: 0 auto;
-        margin-bottom: 1rem;
-      }
-
-      .layout hr {
-        margin: 0 auto;
-      }
-
-      .title-heading p {
-        text-align: center;
-        margin: 0 auto;
-        display: none;
-      }
-    }
-  </style>
-
-  <body class="h-min">
+  <body>
     <Header />
 
-    <div class="layout">
-      <div class="title-heading mx-0">
-        <h1 class="gradient-text text-xlg font-extrabold tracking-tighter">
+    <div class="layout mx-2">
+      <div
+        class="title-heading mx-auto w-full max-w-6xl text-center md:text-left"
+      >
+        <h1 class="py-4 font-extrabold tracking-tighter text-5xl">
           {title}
         </h1>
-        <hr style="border-top: 2.5px solid #000; width: 72%; " />
-        <p class="w-3/4 pt-2 text-gray-900">{description}</p>
+        <hr class="border-t-2 border-black md:w-3/4" />
+        <p class="hidden w-3/4 pt-2 text-left text-gray-900 md:block">
+          {description}
+        </p>
+
+        <main>
+          <slot />
+        </main>
       </div>
 
-      <main>
-        <slot />
-      </main>
+      <Cta />
+      <Horizontalbar />
+      <Horizontalbar2 />
     </div>
-
-    <Cta />
-    <Horizontalbar />
-    <Horizontalbar2 />
     <Footer />
   </body>
+
 
 </html>
