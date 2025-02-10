@@ -22,6 +22,8 @@ const {
     author,
     credit,
     slug,
+    buyLink,
+    product,
   },
 } = Astro.props;
 
@@ -71,6 +73,18 @@ export const prerender = true;
             <slot class="mdx" />
           </div>
         </article>
+
+        {/* Conditionally render the buyLink */}
+        {
+          buyLink && (
+            <div class="mt-6">
+              <a href={buyLink} class="text-amber-500 hover:text-amber-700">
+                Buy the {product}
+              </a>
+            </div>
+          )
+        }
+
         <br />
         <a href="javascript:history.back()" class="text-black"
           >Back to Previous</a

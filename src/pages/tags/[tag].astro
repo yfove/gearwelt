@@ -39,14 +39,9 @@ const filteredPosts = posts.filter((post) =>
 
 <head> </head>
 
-<BaseHead
-  title={tag}
-  description="Our featured articles cover all the latest developments, trends, and innovations in the eBike industry. From cutting-edge technology to new product releases, we cover everything that enthusiasts, riders, manufacturers, and everyone interested in the future of sustainable transportation should be tracking."
-/>
-
 <BlogLayout
   title={tag}
-  description="Our featured articles cover all the latest developments, trends, and innovations in the eBike industry. From cutting-edge technology to new product releases, we cover everything that enthusiasts, riders, manufacturers, and everyone interested in the future of sustainable transportation should be tracking."
+  description={`Discover a curated selection of premium products related to ${tag}, each chosen for its quality, design, and relevance. We handpick only the finest items that align with your refined taste and lifestyle, ensuring every choice meets the highest standards.`}
 >
   <section class="mx-auto max-w-6xl">
     <div class=""><Alltags /></div>
