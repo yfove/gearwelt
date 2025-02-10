@@ -19,7 +19,7 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
   description="Our electric bike guides feature comprehensive information, comparisons, and tutorials on eBikes, their components, accessories, maintenance, and usage. Whether you're a beginner looking to purchase your first eBike or an experienced rider seeking advanced tips, our guides cater to all levels of expertise."
 >
   <section>
-    <div class="blog p-4">
+    <div class="blog py-4">
       <p class="text-white text-sm">
         <em>
           Post {page.start + 1} through {page.end + 1} of {page.total} total posts
@@ -30,25 +30,22 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
       >
         {
           page.data.map((post) => (
-            <div
-              key={post.frontmatter.slug}
-              class="flex rounded-lg bg-zinc-950 p-4"
-            >
+            <div key={post.frontmatter.slug} class="flex bg-stone-100 p-4">
               <a href={"/guides/" + post.frontmatter.slug} class="sm:flex">
                 <img
-                  class="mr-4 rounded-lg object-cover sm:w-24"
+                  class="mr-4 object-cover sm:w-32"
                   src={post.frontmatter.image}
                   alt={post.frontmatter.title}
                 />
                 <div class="flex flex-col justify-between">
                   <div>
-                    <p class="font-bold text-white text-lg">
+                    <p class="font-bold text-black text-lg">
                       {post.frontmatter.title}
                     </p>
-                    <p class="text-white text-sm">
+                    <p class="text-black text-sm">
                       {post.frontmatter.description}
                     </p>
-                    <p class="text-gray-400 text-xs">
+                    <p class="text-gray-600 text-xs">
                       {post.frontmatter.excerpt}
                     </p>
                   </div>

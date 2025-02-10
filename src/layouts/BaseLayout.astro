@@ -14,16 +14,13 @@ const { title, description, author, date, url } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
-      rel="stylesheet"
-    />
+
     <Header />
   </head>
   <body>
-    <div class="layout">
+    <div class="layout mx-auto w-full max-w-6xl">
       <div class="title-heading mx-3">
-        <h1 class="gradient-text text-xlg font-extrabold tracking-tighter">
+        <h1 class="py-4 font-extrabold tracking-tighter text-4xl">
           {title}
         </h1>
         <hr style="border-top: 2.5px solid #000; width: 72%; " />

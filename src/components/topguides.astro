@@ -16,13 +16,10 @@ const posts = await Astro.glob("../pages/guides/**/*.mdx");
       >
         {
           posts.slice(0, 4).map((post) => (
-            <div
-              key={post.frontmatter.slug}
-              class="flex rounded-lg bg-white p-4"
-            >
+            <div key={post.frontmatter.slug} class="flex  bg-white p-4">
               <a href={"/guides/" + post.frontmatter.slug} class="sm:flex">
                 <img
-                  class="mr-4 mt-2 rounded-lg object-cover sm:h-40 sm:w-40"
+                  class="mr-4 mt-2  object-cover sm:h-40 sm:w-40"
                   src={post.frontmatter.image}
                   alt={post.frontmatter.title}
                 />
