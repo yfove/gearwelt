@@ -8,11 +8,12 @@ const posts = await Astro.glob("../pages/post/**/*.mdx");
   {/* Loop with images */}
   {
     posts
-      .sort((a, b) => {
-        const aDate = new Date(a.frontmatter.pubDate);
-        const bDate = new Date(b.frontmatter.pubDate);
-        return bDate - aDate;
-      })
+      .sort(() => Math.random() - 0.5) // Shuffle the posts randomly
+      // .sort((a, b) => {
+      //   const aDate = new Date(a.frontmatter.pubDate);
+      //   const bDate = new Date(b.frontmatter.pubDate);
+      //   return bDate - aDate;
+      // })
       .slice(0, 3)
       .map((post) => (
         <li class="flex h-full flex-col border-2 border-stone-400 text-center">

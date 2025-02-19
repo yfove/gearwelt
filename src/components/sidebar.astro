@@ -82,7 +82,7 @@ const guides = await Astro.glob("../pages/guides/**/*.mdx");
             const bDate = new Date(b.frontmatter.pubDate);
             return bDate - aDate;
           })
-          .slice(5)
+          .slice(5, 8)
           .map((post) => (
             <li class="pb-3">
               <a href={"/post/" + post.frontmatter.slug} class="block">
