@@ -24,6 +24,7 @@ const {
     slug,
     buyLink,
     product,
+    tags,
   },
 } = Astro.props;
 
@@ -69,6 +70,28 @@ export const prerender = true;
               {pubDate && <time class="mt-2 inline-block">{pubDate}</time>}
               {credit}
             </small>
+
+            <!-- Render Tags -->
+            <div class="mt-2 space-x-2">
+              {
+                tags &&
+                  tags.map((tag, index) => (
+                    <span key={index} class="text-sm">
+                      <a
+                        href={`/tags/${tag}`}
+                        class=""
+                        style="text-decoration: none; color: #a8a29e"
+                      >
+                        {tag}
+                      </a>
+                      {index < tags.length - 1 && (
+                        <span class="mx-1 text-stone-400">|</span>
+                      )}
+                    </span>
+                  ))
+              }
+            </div>
+
             <hr class="my-4 border-t-2" />
             <slot class="mdx" />
           </div>

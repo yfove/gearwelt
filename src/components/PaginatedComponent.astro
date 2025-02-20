@@ -58,41 +58,50 @@ const lastPage = page.url.next ? `/post/${totalPages}` : null;
                     </span>
                   ))}
                 </div>
-
+              </a>
+              <a href={"/post/" + post.frontmatter.slug} class="flex flex-col">
                 <p class="my-2 px-3 font-bold text-gray-950 text-xl">
                   {post.frontmatter.title}
                 </p>
-                {/* <p class="guide-description small-text my-2 text-gray-950">
-                  {post.frontmatter.description}
-                </p> */}
+                {/* <p
+        class="guide-decription my-2 text-gray-950"
+        style="font-size: .8rem;"
+      >
+        {post.frontmatter.description}
+      </p> */}
                 <p class="px-3 text-gray-900">{post.frontmatter.excerpt}</p>
-                <p class="small-text my-2 font-light text-gray-950">
+                <p
+                  class="my-2 font-light text-gray-950"
+                  style="font-size: .8rem;"
+                >
                   {post.frontmatter.pubDate} | Posted {post.frontmatter.pubTime}
                 </p>
-                <p class="guide-description small-text my-2 text-gray-900">
+                <p
+                  class="guide-decription my-2 text-gray-900"
+                  style="font-size: .7rem;"
+                >
                   &#10711; {post.frontmatter.minutesRead}
                 </p>
-
-                <div class="my-3">
-                  <a
-                    href={`/post/${post.frontmatter.slug}`}
-                    class="text-md mx-2 font-serif italic text-amber-600 hover:text-gray-700 hover:underline"
-                  >
-                    Read
-                  </a>
-                  <span class="text-md mx-2 font-serif italic text-gray-600">
-                    or
-                  </span>
-                  <a
-                    href={post.frontmatter.buyLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-md mx-2 font-serif italic text-amber-600 hover:text-gray-700 hover:underline"
-                  >
-                    Buy
-                  </a>
-                </div>
               </a>
+              <div class="my-3">
+                <a
+                  href={"/post/" + post.frontmatter.slug}
+                  class="text-md mx-2 font-serif italic text-amber-600 hover:text-gray-700 hover:underline"
+                >
+                  Read
+                </a>
+                <span class="text-md mx-2 font-serif italic text-gray-600">
+                  or
+                </span>
+                <a
+                  href={post.frontmatter.buyLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-md mx-2 font-serif italic text-amber-600 hover:text-gray-700 hover:underline"
+                >
+                  Buy
+                </a>
+              </div>
             </li>
           ))
         ) : (

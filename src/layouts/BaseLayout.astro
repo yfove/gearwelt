@@ -21,7 +21,10 @@ const { title, description, author, date, url } = Astro.props;
   <body>
     <div class="layout mx-auto w-full max-w-6xl">
       <div class="title-heading mx-3">
-        <h1 class="py-4 font-extrabold tracking-tighter text-4xl">
+        <h1
+          class="py-4 font-bold uppercase tracking-tighter text-4xl"
+          style="font-family: 'Josefin Sans', sans-serif;"
+        >
           {title}
         </h1>
         <hr style="border-top: 2.5px solid #000; width: 72%; " />

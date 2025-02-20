@@ -14,7 +14,7 @@ const posts = await Astro.glob("../pages/post/**/*.mdx");
         const bDate = new Date(b.frontmatter.pubDate);
         return bDate - aDate;
       })
-      .slice(0, 4)
+      .slice(1, 5)
       .map((post) => (
         <Cardcontent
           post={post}
