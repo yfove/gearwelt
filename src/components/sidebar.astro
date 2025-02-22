@@ -4,13 +4,13 @@ const guides = await Astro.glob("../pages/guides/**/*.mdx");
 ---
 
 <aside class="ml-8 hidden lg:block">
-  <div class="social-media mb-4 rounded-lg bg-gray-950 p-4 text-white">
+  <div class="social-media mb-4 bg-black p-4 text-white">
     <ul class="space-y-2">
       <li>
         <a
           href="https://linktr.ee/gearwelt"
           target="_blank"
-          class="inline-flex w-full items-center justify-center rounded-lg border-2 border-gray-300 px-4 py-2.5 font-medium text-gray-900 text-base hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          class="inline-flex w-full items-center justify-center border-2 border-gray-300 px-4 py-2.5 font-medium text-gray-900 text-base hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         >
           <svg
             class="-ml-1 mr-2 h-5 w-5"
@@ -27,7 +27,7 @@ const guides = await Astro.glob("../pages/guides/**/*.mdx");
         <a
           href="https://instagram.com/gearwelt"
           target="_blank"
-          class="inline-flex w-full items-center justify-center rounded-lg border-2 border-gray-300 px-4 py-2.5 font-medium text-gray-900 text-base hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          class="inline-flex w-full items-center justify-center border-2 border-gray-300 px-4 py-2.5 font-medium text-gray-900 text-base hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         >
           <svg
             class="-ml-1 mr-2 h-5 w-5"
@@ -43,7 +43,7 @@ const guides = await Astro.glob("../pages/guides/**/*.mdx");
     </ul>
   </div>
 
-  <div class="recent-posts rounded-lg bg-gray-950 p-4 text-white">
+  <div class="recent-posts bg-black p-4 text-white">
     <h3 class="gradient-text pb-3 font-bold text-lg">Recent Posts</h3>
     <ul class="pb-6">
       {
@@ -53,14 +53,14 @@ const guides = await Astro.glob("../pages/guides/**/*.mdx");
             const bDate = new Date(b.frontmatter.pubDate);
             return bDate - aDate;
           })
-          .slice(0, 5)
+          .slice(0, 6)
           .map((post) => (
             <li class="py-2">
               <a href={"/post/" + post.frontmatter.slug} class="block">
                 <img
                   src={post.frontmatter.image}
                   alt={post.frontmatter.title}
-                  class="rounded-lg"
+                  class=""
                 />
                 <small class="font-bold">{post.frontmatter.title}</small>
                 <br />
@@ -82,12 +82,12 @@ const guides = await Astro.glob("../pages/guides/**/*.mdx");
             const bDate = new Date(b.frontmatter.pubDate);
             return bDate - aDate;
           })
-          .slice(5, 8)
+          .slice(5, 7)
           .map((post) => (
             <li class="pb-3">
               <a href={"/post/" + post.frontmatter.slug} class="block">
                 <small class="font-bold">{post.frontmatter.title}</small>
-                <p class="font-light">{post.frontmatter.description}</p>
+                <p class="font-light text-xs">{post.frontmatter.description}</p>
                 <small class="text-gray-400">{post.frontmatter.pubDate}</small>
               </a>
             </li>
