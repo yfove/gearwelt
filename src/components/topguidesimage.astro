@@ -1,0 +1,40 @@
+---
+const posts = await Astro.glob("../pages/guides/**/*.mdx");
+---
+
+<div class="wrapper mx-auto max-w-6xl border-2 border-stone-500">
+  <div class="recent-posts p-2 py-5">
+    <div class="heading">
+      <a href="/guides">
+        <h2 class="text-center text-black">Gadget Compendium</h2>
+      </a>
+      <hr class="w-full border-t border-black" />
+    </div>
+    <div class="horizontalbar">
+      <div
+        class="my-3 grid gap-5 sm:grid-cols-[repeat(auto-fill,minmax(380px,1fr))]"
+      >
+        {
+          posts.slice(0, 4).map((post) => (
+            <div key={post.frontmatter.slug} class="relative flex">
+              <a href={"/guides/" + post.frontmatter.slug} class="block w-full">
+                <div class="relative h-64 w-full bg-gray-300">
+                  <img
+                    class="h-full w-full object-cover"
+                    src={post.frontmatter.image}
+                    alt={post.frontmatter.title}
+                  />
+                  <div class="absolute left-0 top-0 w-3/4 bg-black bg-opacity-50 p-4 text-white">
+                    <h2 class="font-bold text-2xl">{post.frontmatter.title}</h2>
+                    <p class="mt-2">{post.frontmatter.description}</p>
+                    {/* <sub>{post.frontmatter.excerpt}</sub> */}
+                  </div>
+                </div>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>

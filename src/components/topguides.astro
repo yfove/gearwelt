@@ -19,7 +19,7 @@ const posts = await Astro.glob("../pages/guides/**/*.mdx");
             <div key={post.frontmatter.slug} class="flex  bg-white p-4">
               <a href={"/guides/" + post.frontmatter.slug} class="sm:flex">
                 <img
-                  class="sm:h-100 mr-4  mt-2 object-cover sm:w-64"
+                  class="sm:h-100 mr-4  mt-2 object-cover sm:w-48"
                   src={post.frontmatter.image}
                   alt={post.frontmatter.title}
                 />
