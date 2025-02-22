@@ -28,7 +28,7 @@ function Search({ searchList }) {
   }
 
   return (
-    <div class="">
+    <div class="text-left">
       <label
         htmlFor="search"
         className="sr-only mb-2 font-medium text-gray-900 text-sm dark:text-white"
