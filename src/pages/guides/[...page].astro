@@ -25,7 +25,31 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
           Post {page.start + 1} through {page.end + 1} of {page.total} total posts
         </em>
       </p>
-      <ul
+      <div
+        class="my-3 grid gap-5 sm:grid-cols-[repeat(auto-fill,minmax(380px,1fr))]"
+      >
+        {
+          page.data.slice(0, 4).map((post) => (
+            <div key={post.frontmatter.slug} class="relative flex">
+              <a href={"/guides/" + post.frontmatter.slug} class="block w-full">
+                <div class="relative h-64 w-full bg-gray-300">
+                  <img
+                    class="h-full w-full object-cover"
+                    src={post.frontmatter.image}
+                    alt={post.frontmatter.title}
+                  />
+                  <div class="absolute left-0 top-0 w-3/4 bg-black bg-opacity-50 p-4 text-white">
+                    <h2 class="font-bold text-2xl">{post.frontmatter.title}</h2>
+                    <p class="mt-2">{post.frontmatter.description}</p>
+                    {/* <sub>{post.frontmatter.excerpt}</sub> */}
+                  </div>
+                </div>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+      <!-- <ul
         class="my-3 grid gap-5 sm:grid-cols-[repeat(auto-fill,minmax(380px,1fr))]"
       >
         {
@@ -59,7 +83,7 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
             </div>
           ))
         }
-      </ul>
+      </ul> -->
       <div class="mt-12 grid place-content-center">
         <Pagination
           firstPage={page.url.prev ? "/blog" : null}
