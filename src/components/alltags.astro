@@ -10,7 +10,7 @@ const maxVisibleTags = 12;
 <div class="tags flex flex-wrap justify-start gap-2 my-3">
   <!-- Display first maxVisibleTags tags -->
   {
-    tags.slice(0, maxVisibleTags).map((tag) => (
+    tags.sort((a, b) => a.localeCompare(b)) .slice(0, maxVisibleTags).map((tag) => (
       <p
         key={tag}
         class="tag  border-2 border-stone-900 bg-black px-4 py-1 font-bold text-white text-sm hover:text-gray-100"

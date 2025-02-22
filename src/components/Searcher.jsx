@@ -83,16 +83,31 @@ function Search({ searchList }) {
       <ul className="m-4 list-none">
         {posts &&
           posts.map((post) => (
-            <li className="py-2">
+            <li className="py-2" key={post.frontmatter.slug}>
               <a
                 className="text-black underline-offset-2 text-lg hover:text-amber-500 hover:underline"
                 href={`/post/${post.frontmatter.slug}`}
               >
-                {post.frontmatter.title}
+                <div className="flex items-center">
+                  {/* Add image */}
+                  {post.frontmatter.image && (
+                    <img
+                      src={post.frontmatter.image}
+                      alt={post.frontmatter.title}
+                      className="mr-4 h-16 w-16 object-cover"
+                    />
+                  )}
+                  <div>
+                    <h2 className="font-semibold">{post.frontmatter.title}</h2>
+                    <p className="text-gray-400 text-sm">
+                      {post.frontmatter.description}
+                    </p>
+                    <p className="text-gray-400 text-sm">
+                      Published {post.frontmatter.pubDate}
+                    </p>
+                  </div>
+                </div>
               </a>
-              <p className="text-gray-400 text-sm">
-                {post.frontmatter.description}
-              </p>
             </li>
           ))}
       </ul>
