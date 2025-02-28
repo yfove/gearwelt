@@ -3,49 +3,56 @@ const { tags, relatedPosts } = Astro.props; // Destructure the props passed to t
 ---
 
 <div class="related-products-section mx-auto my-4 max-w-6xl sm:mt-20">
-  {/* Display the related tags dynamically */}
+  {/* Check if there are related posts to display */}
   {
-    tags.length > 0 && (
-      <h1 class="mb-6 font-semibold uppercase text-gray-900 text-lg">
-        See more from{" "}
-        {tags.slice(0, -1).map((tag, index) => (
-          <span key={index}>{tag}, </span>
-        ))}
-        {tags.length > 1 && "and "}
-        <span>{tags[tags.length - 1]}</span> {/* Last tag without comma */}
-      </h1>
+    relatedPosts.length > 0 && (
+      <>
+        {/* Display the related tags dynamically */}
+        {tags.length > 0 && (
+          <h1 class="mb-6 font-semibold uppercase text-gray-900 text-lg">
+            See more from{" "}
+            {tags.slice(0, -1).map((tag, index) => (
+              <span key={index}>{tag}, </span>
+            ))}
+            {tags.length > 1 && "and "}
+            <span>{tags[tags.length - 1]}</span> {/* Last tag without comma */}
+          </h1>
+        )}
+
+        <div class="wrapper horizontalbar grid max-w-6xl list-none grid-cols-1 gap-8 text-gray-100 sm:grid-cols-2 md:grid-cols-2">
+          {/* Loop through related posts */}
+          {relatedPosts.map((post) => (
+            <li
+              key={post.frontmatter.slug}
+              class="flex h-full flex-col border-2 border-stone-400 text-center"
+            >
+              <a href={"/post/" + post.frontmatter.slug}>
+                <img
+                  class="mb-4 h-80 w-full object-cover"
+                  src={post.frontmatter.image}
+                  alt={post.frontmatter.title}
+                />
+                <p class="m-1 font-bold text-gray-950 text-xl">
+                  {post.frontmatter.title}
+                  <p
+                    class="guide-decription my-2 text-gray-900"
+                    style="font-size: .7rem;"
+                  >
+                    &#10711; {post.frontmatter.minutesRead}
+                  </p>
+                </p>
+                <p class="px-2 text-gray-900">{post.frontmatter.excerpt}</p>
+                <p
+                  class="my-2 font-light text-gray-950"
+                  style="font-size: .8rem;"
+                >
+                  {post.frontmatter.pubDate} | Posted {post.frontmatter.pubTime}
+                </p>
+              </a>
+            </li>
+          ))}
+        </div>
+      </>
     )
   }
-
-  <div
-    class="wrapper horizontalbar grid max-w-6xl list-none grid-cols-1 gap-8 text-gray-100 sm:grid-cols-2 md:grid-cols-2"
-  >
-    {/* Loop through related posts */}
-    {
-      relatedPosts.map((post) => (
-        <li class="flex h-full flex-col border-2 border-stone-400 text-center">
-          <a href={"/post/" + post.frontmatter.slug}>
-            <img
-              class="mb-4 h-80 w-full object-cover"
-              src={post.frontmatter.image}
-              alt={post.frontmatter.title}
-            />
-            <p class="m-1 font-bold text-gray-950 text-xl">
-              {post.frontmatter.title}
-              <p
-                class="guide-decription my-2 text-gray-900"
-                style="font-size: .7rem;"
-              >
-                &#10711; {post.frontmatter.minutesRead}
-              </p>
-            </p>
-            <p class="px-2 text-gray-900">{post.frontmatter.excerpt}</p>
-            <p class="my-2 font-light text-gray-950" style="font-size: .8rem;">
-              {post.frontmatter.pubDate} | Posted {post.frontmatter.pubTime}
-            </p>
-          </a>
-        </li>
-      ))
-    }
-  </div>
 </div>
