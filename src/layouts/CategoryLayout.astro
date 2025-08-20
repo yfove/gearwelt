@@ -1,0 +1,56 @@
+---
+// layouts/CategoryLayout.astro
+import Footer from "~/components/footer2.astro";
+import Header from "~/components/header4.astro";
+import Heromin from "~/components/heromin.astro";
+import Categorybar from "~/components/CategoryBar.astro";
+import Cardcontent from "~/components/_cardcontent.astro";
+
+const { title, posts } = Astro.props;
+---
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/watch.svg" type="image/svg+xml" />
+    <title>{title}</title>
+</head>
+
+<body class="bg-white text-black">
+    <Header />
+    <Heromin />
+    <Categorybar />
+
+    <main class="max-w-5xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center mb-6 uppercase">{title}</h1>
+
+        {posts.length > 0 ? (
+        <div class="space-y-8">
+            {/* First post - single column row */}
+            <div class="grid grid-cols-1">
+                <Cardcontent post={posts[0]} key={posts[0].frontmatter.slug} imageClass="h-64" />
+            </div>
+
+            {/* Remaining posts - 2-column grid */}
+            {posts.length > 1 && (
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                {posts.slice(1).map((post) => (
+                <Cardcontent post={post} key={post.frontmatter.slug} imageClass="h-64" />
+                ))}
+            </div>
+            )}
+        </div>
+        ) : (
+        <p class="text-center text-gray-500">
+            No posts found for the "{title.toLowerCase()}" tag.
+        </p>
+        )}
+
+    </main>
+
+    <Footer />
+</body>
+
+</html>

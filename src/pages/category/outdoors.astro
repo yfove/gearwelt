@@ -1,11 +1,12 @@
 ---
+// pages/categories/cars.astro
 import CategoryLayout from "../../layouts/CategoryLayout.astro";
 
 const allPosts = await Astro.glob("../../pages/**/**/*.mdx");
 
 const filteredPosts = allPosts.filter((post) =>
-(post.frontmatter.tags || []).some(tag => tag.toLowerCase() === "cars")
+(post.frontmatter.tags || []).some(tag => tag.toLowerCase() === "outdoors")
 );
 ---
 
-<CategoryLayout title="Cars" posts={filteredPosts} />
+<CategoryLayout title="Outdoors" posts={filteredPosts} />

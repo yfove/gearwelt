@@ -1,0 +1,11 @@
+---
+import CategoryLayout from "../../layouts/CategoryLayout.astro";
+
+const allPosts = await Astro.glob("../../pages/**/**/*.mdx");
+
+const filteredPosts = allPosts.filter((post) =>
+(post.frontmatter.tags || []).some(tag => tag.toLowerCase() === "tech")
+);
+---
+
+<CategoryLayout title="tech" posts={filteredPosts} />
