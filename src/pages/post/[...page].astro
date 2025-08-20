@@ -5,25 +5,23 @@ import SearchBar from "~/components/SearchBar.astro";
 import PaginatedComponent from "~/components/PaginatedComponent.astro";
 
 export async function getStaticPaths({ paginate }) {
-  const post = await Astro.glob("./*.mdx");
+const post = await Astro.glob("./*.mdx");
 
-  const sortedPosts = post.sort((a, b) => {
-    const aDate = new Date(a.frontmatter.pubDate);
-    const bDate = new Date(b.frontmatter.pubDate);
+const sortedPosts = post.sort((a, b) => {
+const aDate = new Date(a.frontmatter.pubDate);
+const bDate = new Date(b.frontmatter.pubDate);
 
-    return bDate - aDate;
-  });
+return bDate - aDate;
+});
 
-  return paginate(sortedPosts, { pageSize: 6, page: 1 });
+return paginate(sortedPosts, { pageSize: 14, page: 1 });
 }
 
 const { page } = Astro.props;
 ---
 
-<BlogLayout
-  title="Featured Articles"
-  description="Our guides help you discover the best products across a variety of categories, from luxury gear to the latest innovations. We provide curated, detailed information on standout items, ensuring you stay ahead of trends and make informed purchasing decisions. Whether you're searching for high-end tech, stylish apparel, or unique lifestyle products, our recommendations offer a refined selection to match your tastes and elevate your everyday life."
->
+<BlogLayout title="Gear Digest"
+  description="Our guides help you discover the best products across a variety of categories, from luxury gear to the latest innovations. We provide curated, detailed information on standout items, ensuring you stay ahead of trends and make informed purchasing decisions. Whether you're searching for high-end tech, stylish apparel, or unique lifestyle products, our recommendations offer a refined selection to match your tastes and elevate your everyday life.">
   <section class="mx-auto max-w-6xl">
     <div class="tags">
       <Alltags />

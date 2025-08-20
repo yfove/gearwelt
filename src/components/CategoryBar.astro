@@ -9,14 +9,17 @@ const subCategories = [
 ---
 
 <!-- Main categories bar -->
-<div class="flex justify-between items-center max-w-4xl mx-auto pt-5 border-b border-transparent">
-    {mainCategories.map(category => (
-    <a href={`/category/${category.toLowerCase()}`}
-        class="text-black font-extrabold text-lg cursor-pointer hover:text-amber-600 uppercase" key={category}>
-        {category}
-    </a>
-    ))}
+<div class="max-w-4xl mx-auto pt-5 border-b border-transparent px-4">
+    <div class="flex flex-wrap justify-center gap-2 sm:gap-4 sm:justify-between sm:flex-nowrap">
+        {mainCategories.map(category => (
+        <a href={`/category/${category.toLowerCase()}`} class="text-black font-extrabold text-base sm:text-lg cursor-pointer hover:text-amber-600 uppercase 
+               sm:whitespace-nowrap" key={category}>
+            {category}
+        </a>
+        ))}
+    </div>
 </div>
+
 
 <!-- Double horizontal divider with spacing -->
 <div class="max-w-4xl mx-auto mt-3 flex flex-col gap-1.5">
@@ -25,13 +28,16 @@ const subCategories = [
 </div>
 
 <!-- Sub categories bar -->
-<div class="flex justify-center gap-10 max-w-4xl mx-auto py-3">
-    {subCategories.map(category => (
-    <a href={`/category/${category.toLowerCase().replace(/\s+/g, "-" )}`}
-        class="text-black font-semibold text-xs cursor-pointer hover:text-amber-600 uppercase" key={category}>
-        {category}
-    </a>
-    ))}
+<div class="max-w-4xl mx-auto py-3 px-4">
+    <div class="flex flex-wrap justify-center gap-3 sm:gap-6">
+        {subCategories.map(category => (
+        <a href={`/category/${category.toLowerCase().replace(/\s+/g, "-" )}`}
+            class="text-black font-semibold text-xs sm:text-sm cursor-pointer hover:text-amber-600 whitespace-normal sm:whitespace-nowrap"
+            key={category}>
+            {category}
+        </a>
+        ))}
+    </div>
 </div>
 
 <!-- Single bottom divider -->
