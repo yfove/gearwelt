@@ -5,6 +5,11 @@ import Header from "~/components/header4.astro";
 import Heromin from "~/components/heromin.astro";
 import Categorybar from "~/components/CategoryBar.astro";
 import Cardcontent from "~/components/_cardcontent.astro";
+import Adhorizontal from "~/components/adhorizontal.astro";
+import Topnews from "~/components/topnews.astro";
+import Toptriple from "~/components/toptriple.astro";
+import Guidesimage from "~/components/topguidesimage.astro";
+import Contentcta from "~/components/contentcta.astro";
 
 const { title, posts } = Astro.props;
 ---
@@ -48,8 +53,14 @@ const { title, posts } = Astro.props;
         </p>
         )}
 
-    </main>
 
+
+    </main>
+    <Adhorizontal />
+    <Topnews />
+    <Guidesimage />
+    <Toptriple />
+    <Contentcta />
     <Footer />
 </body>
 
