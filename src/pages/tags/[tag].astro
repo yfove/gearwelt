@@ -9,57 +9,57 @@ import SearchBar from "~/components/SearchBar.astro";
 import Cardcontent from "~/components/_cardcontent.astro";
 
 export async function getStaticPaths() {
-  const allPosts = await Astro.glob("../../pages/**/**/*.mdx");
+const allPosts = await Astro.glob("../../pages/**/**/*.mdx");
 
-  // Extract unique tags from all posts
-  const allTags = allPosts.reduce((tags, post) => {
-    post.frontmatter.tags.forEach((tag) => {
-      if (!tags.includes(tag)) {
-        tags.push(tag);
-      }
-    });
-    return tags;
-  }, []);
+// Extract unique tags and convert to lowercase
+const allTags = allPosts.reduce((tags, post) => {
+(post.frontmatter.tags || []).forEach((tag) => {
+const lowerTag = tag.toLowerCase();
+if (!tags.includes(lowerTag)) {
+tags.push(lowerTag);
+}
+});
+return tags;
+}, []);
 
-  // Generate paths based on unique tags
-  const paths = allTags.map((tag) => ({
-    params: { tag },
-    props: { posts: allPosts },
-  }));
+// Generate paths with lowercase tags
+const paths = allTags.map((tag) => ({
+params: { tag },
+props: { posts: allPosts },
+}));
 
-  return paths;
+return paths;
 }
 
-const { tag } = Astro.params;
+const tag = Astro.params.tag.toLowerCase(); // normalize param to lowercase
 const { posts } = Astro.props;
+
+// Filter posts by lowercase tags
 const filteredPosts = posts.filter((post) =>
-  post.frontmatter.tags?.includes(tag)
+(post.frontmatter.tags || []).some(t => t.toLowerCase() === tag)
 );
 ---
 
 <head> </head>
 
-<BlogLayout
-  title={tag}
-  description={`Discover a curated selection of premium products related to ${tag}, each chosen for its quality, design, and relevance. We handpick only the finest items that align with your refined taste and lifestyle, ensuring every choice meets the highest standards.`}
->
+<BlogLayout title={tag} description={`Discover a curated selection of premium products related to ${tag}, each chosen
+  for its quality, design, and relevance. We handpick only the finest items that align with your refined taste and
+  lifestyle, ensuring every choice meets the highest standards.`}>
   <section class="mx-auto max-w-6xl">
-    <div class=""><Alltags /></div>
-    <div><SearchBar /></div>
+    <div class="">
+      <Alltags />
+    </div>
+    <div>
+      <SearchBar />
+    </div>
     <div class="layout">
       <div class="title-heading"></div>
 
-      <div
-        class="wrapper horizontalbar mx-auto my-10 grid grid-cols-1 gap-8 text-gray-100 sm:grid-cols-2"
-      >
+      <div class="wrapper horizontalbar mx-auto my-10 grid grid-cols-1 gap-8 text-gray-100 sm:grid-cols-2">
         {
-          filteredPosts.map((post) => (
-            <Cardcontent
-              post={post}
-              key={post.frontmatter.slug}
-              imageClass="h-64"
-            />
-          ))
+        filteredPosts.map((post) => (
+        <Cardcontent post={post} key={post.frontmatter.slug} imageClass="h-64" />
+        ))
         }
       </div>
     </div>
@@ -78,7 +78,7 @@ const filteredPosts = posts.filter((post) =>
   }
 
   // this changes hover effecet as well
-  li > .card {
+  li>.card {
     background: white;
     color: black;
     border-radius: 0.3rem;

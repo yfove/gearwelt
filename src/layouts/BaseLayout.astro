@@ -11,28 +11,28 @@ const { title, description, author, date, url } = Astro.props;
 ---
 
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/watch.svg" type="image/svg+xml" />
 
-    <Header />
-  </head>
-  <body>
-    <div class="layout mx-auto w-full max-w-6xl">
-      <div class="title-heading mx-3">
-        <h1
-          class="py-4 font-bold uppercase tracking-tighter text-4xl"
-          style="font-family: 'Josefin Sans', sans-serif;"
-        >
-          {title}
-        </h1>
-        <hr style="border-top: 2.5px solid #000; width: 72%; " />
-        <p class="w-3/4 pt-2 text-gray-900">{description}</p>
-        <br />
-      </div>
-      <slot />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" href="/watch.svg" type="image/svg+xml" />
+
+  <Header />
+</head>
+
+<body>
+  <div class="layout mx-auto w-full max-w-5xl">
+    <div class="title-heading mx-3">
+      <h1 class="py-4 font-bold uppercase tracking-tighter text-4xl" style="font-family: 'Josefin Sans', sans-serif;">
+        {title}
+      </h1>
+      <hr style="border-top: 2.5px solid #000; width: 72%; " />
+      <p class="w-3/4 pt-2 text-gray-900">{description}</p>
+      <br />
     </div>
-    <Footer />
-  </body>
+    <slot />
+  </div>
+  <Footer />
+</body>
+
 </html>

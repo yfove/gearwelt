@@ -4,22 +4,18 @@ import Cardcontent from "~/components/_cardcontent.astro";
 const posts = await Astro.glob("../pages/post/**/*.mdx");
 ---
 
-<div class="wrapper mx-auto my-10 max-w-6xl border-2">
+<div class="wrapper mx-auto my-10 max-w-5xl border-2">
   <!-- Loop with images -->
   {
-    posts
-      .sort((a, b) => {
-        const aDate = new Date(a.frontmatter.pubDate);
-        const bDate = new Date(b.frontmatter.pubDate);
-        return bDate - aDate;
-      })
-      .slice(0, 1)
-      .map((post) => (
-        <Cardcontent
-          post={post}
-          key={post.frontmatter.slug}
-          imageClass="h-auto"
-        />
-      ))
+  posts
+  .sort((a, b) => {
+  const aDate = new Date(a.frontmatter.pubDate);
+  const bDate = new Date(b.frontmatter.pubDate);
+  return bDate - aDate;
+  })
+  .slice(0, 1)
+  .map((post) => (
+  <Cardcontent post={post} key={post.frontmatter.slug} imageClass="h-auto" />
+  ))
   }
 </div>

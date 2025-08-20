@@ -1,0 +1,38 @@
+---
+const mainCategories = [
+"Gear", "Style", "Cars", "Tech", "Shelter", "Vices"
+];
+
+const subCategories = [
+"Shop", "Digest", "Ebikenook", "Guides", "Everyday Carry (coming soon)"
+];
+---
+
+<!-- Main categories bar -->
+<div class="flex justify-between items-center max-w-4xl mx-auto pt-5 border-b border-transparent">
+    {mainCategories.map(category => (
+    <a href={`/category/${category.toLowerCase()}`}
+        class="text-black font-extrabold text-lg cursor-pointer hover:text-amber-600 uppercase" key={category}>
+        {category}
+    </a>
+    ))}
+</div>
+
+<!-- Double horizontal divider with spacing -->
+<div class="max-w-4xl mx-auto mt-3 flex flex-col gap-1.5">
+    <div class="h-0.5 bg-gray-700 rounded"></div>
+    <div class="h-0.5 bg-gray-700 rounded"></div>
+</div>
+
+<!-- Sub categories bar -->
+<div class="flex justify-center gap-10 max-w-4xl mx-auto py-3">
+    {subCategories.map(category => (
+    <a href={`/category/${category.toLowerCase().replace(/\s+/g, "-" )}`}
+        class="text-black font-semibold text-xs cursor-pointer hover:text-amber-600 uppercase" key={category}>
+        {category}
+    </a>
+    ))}
+</div>
+
+<!-- Single bottom divider -->
+<div class="max-w-4xl mx-auto border-b-2 border-gray-700"></div>

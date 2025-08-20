@@ -2,7 +2,7 @@
 const posts = await Astro.glob("../pages/guides/**/*.mdx");
 ---
 
-<div class="wrapper mx-auto max-w-6xl border-2 border-stone-500">
+<div class="wrapper mx-auto max-w-5xl border-2 border-stone-500">
   <div class="recent-posts p-2 py-5">
     <div class="heading">
       <a href="/guides">
@@ -11,39 +11,34 @@ const posts = await Astro.glob("../pages/guides/**/*.mdx");
       <hr class="w-full border-t border-black" />
     </div>
     <div class="horizontalbar">
-      <div
-        class="right my-3 grid gap-5 sm:grid-cols-[repeat(auto-fill,minmax(380px,1fr))]"
-      >
+      <div class="right my-3 grid gap-5 sm:grid-cols-[repeat(auto-fill,minmax(380px,1fr))]">
         {
-          posts.slice(0, 4).map((post) => (
-            <div key={post.frontmatter.slug} class="flex  bg-white p-4">
-              <a href={"/guides/" + post.frontmatter.slug} class="sm:flex">
-                <img
-                  class="sm:h-100 mr-4  mt-2 object-cover sm:w-48"
-                  src={post.frontmatter.image}
-                  alt={post.frontmatter.title}
-                />
-                <div class="flex flex-col justify-between">
-                  <div>
-                    <p class="font-bold text-gray-900 text-lg">
-                      {post.frontmatter.title}
-                    </p>
-                    <p class="guide-decription text-gray-900 text-sm">
-                      {post.frontmatter.description}
-                    </p>
-                    <p class="text-gray-900 text-sm">
-                      {post.frontmatter.excerpt}
-                    </p>
-                  </div>
-                  <div class="flex items-center justify-between">
-                    <p class="guide-decription text-gray-900 text-xs">
-                      &#10711; {post.frontmatter.minutesRead}
-                    </p>
-                  </div>
-                </div>
-              </a>
+        posts.slice(0, 4).map((post) => (
+        <div key={post.frontmatter.slug} class="flex  bg-white p-4">
+          <a href={"/guides/" + post.frontmatter.slug} class="sm:flex">
+            <img class="sm:h-100 mr-4  mt-2 object-cover sm:w-48" src={post.frontmatter.image}
+              alt={post.frontmatter.title} />
+            <div class="flex flex-col justify-between">
+              <div>
+                <p class="font-bold text-gray-900 text-lg">
+                  {post.frontmatter.title}
+                </p>
+                <p class="guide-decription text-gray-900 text-sm">
+                  {post.frontmatter.description}
+                </p>
+                <p class="text-gray-900 text-sm">
+                  {post.frontmatter.excerpt}
+                </p>
+              </div>
+              <div class="flex items-center justify-between">
+                <p class="guide-decription text-gray-900 text-xs">
+                  &#10711; {post.frontmatter.minutesRead}
+                </p>
+              </div>
             </div>
-          ))
+          </a>
+        </div>
+        ))
         }
       </div>
     </div>

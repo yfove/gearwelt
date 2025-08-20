@@ -14,19 +14,19 @@ import RelatedProducts from "../components/RelatedProducts.astro"; // Import the
 // Frontmatter for the current post
 const { minutesRead } = Astro.props.frontmatter;
 const {
-  frontmatter: {
-    title,
-    description,
-    pubDate,
-    pubTime,
-    image,
-    author,
-    credit,
-    slug,
-    buyLink,
-    product,
-    tags,
-  },
+frontmatter: {
+title,
+description,
+pubDate,
+pubTime,
+image,
+author,
+credit,
+slug,
+buyLink,
+product,
+tags,
+},
 } = Astro.props;
 // Use Astro.glob to fetch all the posts
 const posts = await Astro.glob("../pages/post/**/*.mdx"); // Adjust the glob pattern if needed
@@ -36,119 +36,107 @@ const firstTag = tags && tags.length > 0 ? tags[0] : null;
 
 // Ensure there are tags
 const relatedPosts = posts
-  .filter(
-    (post) =>
-      post.frontmatter.slug !== slug && // Exclude the current post
-      post.frontmatter.tags.some((tag) => tags.includes(tag)) // Check if any tag matches
-  )
-  .sort(() => Math.random() - 0.5) // Shuffle the posts randomly
-  .slice(0, 2); // Display only 2 posts
+.filter(
+(post) =>
+post.frontmatter.slug !== slug && // Exclude the current post
+post.frontmatter.tags.some((tag) => tags.includes(tag)) // Check if any tag matches
+)
+.sort(() => Math.random() - 0.5) // Shuffle the posts randomly
+.slice(0, 2); // Display only 2 posts
 
 export const prerender = true;
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/watch.svg" type="image/svg+xml" />
-  </head>
 
-  <body class="h-min bg-white text-white">
-    <Header />
-    <div
-      class="mx-auto flex min-h-screen max-w-5xl rounded-lg border p-5 pt-10 shadow-md"
-    >
-      <main class="flex-3 font-normal tracking-wider text-gray-900">
-        <a href="javascript:history.back()" class="text-black"
-          >Back to Previous</a
-        >
-        <a class="text-black">| {title}</a>
-        <article class="mdx">
-          <div class="flex flex-col items-start space-y-1">
-            <h1
-              class="font-bold tracking-tighter text-4xl"
-              style="font-family: 'Josefin Sans', sans-serif;"
-            >
-              {title}
-            </h1>
-            <div class="flex w-full justify-between text-gray-900">
-              <small class="text-stone-500">Written by: &#x270E; {author}</small
-              >
-              <small class="text-right"
-                >&#10711; {minutesRead} <PostViews slug={slug} /></small
-              >
-            </div>
-          </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" href="/watch.svg" type="image/svg+xml" />
+</head>
 
-          <br />
-          <div class="article-body">
-            {image && <img class="w-full " src={image} alt="" />}
-            <small class="text-black">
-              Published on: {pubTime} •
-              {pubDate && <time class="mt-2 inline-block">{pubDate}</time>}
-              {credit}
+<body class="h-min bg-white text-white">
+  <Header />
+  <div class="mx-auto flex min-h-screen max-w-5xl border mt-2 p-5 pt-10 shadow-md">
+    <main class="flex-3 font-normal tracking-wider text-gray-900">
+      <a href="javascript:history.back()" class="text-black">Back to Previous</a>
+      <a class="text-black">| {title}</a>
+      <article class="mdx">
+        <div class="flex flex-col items-start space-y-1">
+          <h1 class="font-bold tracking-tighter text-4xl" style="font-family: 'Josefin Sans', sans-serif;">
+            {title}
+          </h1>
+          <div class="flex w-full justify-between text-gray-900">
+            <small class="text-stone-500">Written by: &#x270E; {author}</small>
+            <small class="text-right">&#10711; {minutesRead}
+              <PostViews slug={slug} />
             </small>
-
-            <!-- Render Tags -->
-            <div class="mt-2 space-x-2">
-              {
-                tags &&
-                  tags.map((tag, index) => (
-                    <span key={index} class="text-sm">
-                      <a
-                        href={`/tags/${tag}`}
-                        style="text-decoration: none; color: #a8a29e"
-                      >
-                        {tag}
-                      </a>
-                      {index < tags.length - 1 && (
-                        <span class="mx-1 text-stone-400">|</span>
-                      )}
-                    </span>
-                  ))
-              }
-            </div>
-
-            <hr class="my-4 border-t-2" />
-            <slot class="mdx" />
           </div>
-        </article>
-
-        {/* Conditionally render the buyLink */}
-        {
-          buyLink && (
-            <div class="mt-6">
-              <a href={buyLink} class="text-amber-500 hover:text-amber-700">
-                Buy the {product}
-              </a>
-            </div>
-          )
-        }
+        </div>
 
         <br />
-        <a href="javascript:history.back()" class="text-black"
-          >Back to Previous</a
-        >
-        <span>|</span>
-        <a href="/" class="text-black">Back to Home</a>
+        <div class="article-body">
+          {image && <img class="w-full " src={image} alt="" />}
+          <small class="text-black">
+            Published on: {pubTime} •
+            {pubDate && <time class="mt-2 inline-block">{pubDate}</time>}
+            {credit}
+          </small>
 
-        <RelatedProducts tags={tags} relatedPosts={relatedPosts} />
-      </main>
+          <!-- Render Tags -->
+          <div class="mt-2 space-x-2">
+            {
+            tags &&
+            tags.map((tag, index) => (
+            <span key={index} class="text-sm">
+              <a href={`/tags/${tag}`} style="text-decoration: none; color: #a8a29e">
+                {tag}
+              </a>
+              {index < tags.length - 1 && ( <span class="mx-1 text-stone-400">|</span>
+            )}
+            </span>
+            ))
+            }
+          </div>
 
-      <div class="sidebar-container flex flex-1 flex-col">
-        <Sidebar />
+          <hr class="my-4 border-t-2" />
+          <slot class="mdx" />
+        </div>
+      </article>
+
+      {/* Conditionally render the buyLink */}
+      {
+      buyLink && (
+      <div class="mt-6">
+        <a href={buyLink} class="text-amber-500 hover:text-amber-700">
+          Buy the {product}
+        </a>
       </div>
+      )
+      }
+
+      <br />
+      <a href="javascript:history.back()" class="text-black">Back to Previous</a>
+      <span>|</span>
+      <a href="/" class="text-black">Back to Home</a>
+
+      <RelatedProducts tags={tags} relatedPosts={relatedPosts} />
+    </main>
+
+    <div class="sidebar-container flex flex-1 flex-col">
+      <Sidebar />
     </div>
+  </div>
 
-    <!-- Accordion component -->
-    <Accordian />
+  <!-- Accordion component -->
+  <Accordian />
 
-    {/* Call to action social media component */}
-    <Cta />
-    <Horizontalbar2 />
-    <Horizontalbar />
-  </body>
+  {/* Call to action social media component */}
+  <Cta />
+  <Horizontalbar2 />
+  <Horizontalbar />
+</body>
+
 </html>
 
 <Footer />

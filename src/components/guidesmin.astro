@@ -2,7 +2,7 @@
 const guides = await Astro.glob("../pages/guides/**/*.mdx");
 ---
 
-<div class="mx-auto my-10 max-w-6xl">
+<div class="mx-auto my-10 max-w-5xl">
   <div class="recent-posts">
     <div class="heading mb-4">
       <a href="/guides">
@@ -10,29 +10,27 @@ const guides = await Astro.glob("../pages/guides/**/*.mdx");
       </a>
       <hr class="w-full border-t border-black" />
     </div>
-    <div
-      class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
-    >
+    <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
       {/* Loop with images */}
       {
-        guides
-          .reverse()
-          .slice(0, 5)
-          .map((guide) => (
-            <div key={guide.frontmatter.slug} class="p-4">
-              <a href={"/guides/" + guide.frontmatter.slug} class="block">
-                <p class="font-semibold text-black text-lg sm:text-base">
-                  {guide.frontmatter.title}
-                </p>
-                <p class="text-black text-sm sm:text-xs">
-                  {guide.frontmatter.description}
-                </p>
-                <small class="sm:text-xxs text-black text-xs">
-                  {guide.frontmatter.pubDate}
-                </small>
-              </a>
-            </div>
-          ))
+      guides
+      .reverse()
+      .slice(0, 5)
+      .map((guide) => (
+      <div key={guide.frontmatter.slug} class="p-4">
+        <a href={"/guides/" + guide.frontmatter.slug} class="block">
+          <p class="font-semibold text-black text-lg sm:text-base">
+            {guide.frontmatter.title}
+          </p>
+          <p class="text-black text-sm sm:text-xs">
+            {guide.frontmatter.description}
+          </p>
+          <small class="sm:text-xxs text-black text-xs">
+            {guide.frontmatter.pubDate}
+          </small>
+        </a>
+      </div>
+      ))
       }
     </div>
   </div>

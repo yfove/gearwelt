@@ -9,46 +9,39 @@ const { title, description } = Astro.props || {};
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/watch.svg" type="image/svg+xml" />
-  </head>
 
-  <BaseHead
-    title={"Articles"}
-    description="A page to display all our blog posts"
-  />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" href="/watch.svg" type="image/svg+xml" />
+</head>
 
-  <body>
-    <Header />
+<BaseHead title={"Articles"} description="A page to display all our blog posts" />
 
-    <div class="layout mx-2">
-      <div
-        class="title-heading mx-auto w-full max-w-6xl text-center md:text-left"
-      >
-        <h1
-          class="py-4 font-bold uppercase tracking-tighter text-4xl"
-          style="font-family: 'Josefin Sans', sans-serif;"
-        >
-          {title}
-        </h1>
-        <hr class="border-t-2 border-black md:w-3/4" />
-        <p class="hidden w-3/4 pt-2 text-left text-gray-900 md:block">
-          {description}
-        </p>
+<body>
+  <Header />
 
-        <main>
-          <slot />
-        </main>
-      </div>
+  <div class="layout mx-2">
+    <div class="title-heading mx-auto w-full max-w-5xl text-center md:text-left">
+      <h1 class="py-4 font-bold uppercase tracking-tighter text-4xl" style="font-family: 'Josefin Sans', sans-serif;">
+        {title}
+      </h1>
+      <hr class="border-t-2 border-black md:w-3/4" />
+      <p class="hidden w-3/4 pt-2 text-left text-gray-900 md:block">
+        {description}
+      </p>
 
-      <Cta />
-      <Horizontalbar />
-      <Horizontalbar2 />
+      <main>
+        <slot />
+      </main>
     </div>
-    <Footer />
-  </body>
+
+    <Cta />
+    <Horizontalbar />
+    <Horizontalbar2 />
+  </div>
+  <Footer />
+</body>
 
 
 </html>
