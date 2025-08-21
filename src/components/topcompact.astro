@@ -1,0 +1,38 @@
+---
+const posts = await Astro.glob("../pages/post/**/*.mdx");
+
+// Shuffle posts randomly and get top 3
+const latestPosts = posts.sort(() => Math.random() - 0.5).slice(0, 5);
+---
+
+<section class="max-w-5xl mx-auto my-10 px-4">
+    <ul class="list-none space-y-4">
+        {latestPosts.map((post) => {
+        const { title, image, description, pubDate, slug } = post.frontmatter;
+        const href = `/post/${slug}`;
+        return (
+        <li class="py-2" key={slug}>
+            <a href={href} class="text-black text-lg hover:text-amber-500 hover:underline underline-offset-2 block">
+                <div class="flex items-center">
+                    {image ? (
+                    <img src={image} alt={title} class="mr-4 h-16 w-16 object-cover rounded" />
+                    ) : (
+                    <div
+                        class="mr-4 h-16 w-16 bg-gray-300 flex items-center justify-center text-sm text-gray-500 rounded">
+                        No image
+                    </div>
+                    )}
+                    <div>
+                        <h2 class="font-semibold text-gray-950">{title}</h2>
+                        {description && (
+                        <p class="text-gray-600 text-sm">{description}</p>
+                        )}
+                        <p class="text-gray-400 text-sm">Published {pubDate}</p>
+                    </div>
+                </div>
+            </a>
+        </li>
+        );
+        })}
+    </ul>
+</section>

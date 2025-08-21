@@ -1,11 +1,12 @@
 ---
 import BlogLayout from "../../layouts/BlogLayout.astro";
 import { Pagination } from "accessible-astro-components";
+import LatestResults from "~/components/LatestResults.astro";
 
 export async function getStaticPaths({ paginate }) {
-  const post = await Astro.glob("./*.mdx");
+const post = await Astro.glob("./*.mdx");
 
-  return paginate(post, { pageSize: 6 });
+return paginate(post, { pageSize: 6 });
 }
 
 const { page } = Astro.props;
@@ -14,10 +15,8 @@ const allPosts = await Astro.glob("./*.mdx");
 const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
 ---
 
-<BlogLayout
-  title="Guides and Tutorials"
-  description="Our guides to fashion tech and consumerism simplify the process of finding the right products for your needs. We provide clear, concise information on the latest trends, smart fashion choices, and sustainable options, helping you make informed decisions. Whether you're exploring wearable tech or looking for eco-friendly fashion, our guides offer practical advice to help you choose the perfect product tailored to your style and values."
->
+<BlogLayout title="Guides and Tutorials"
+  description="Our guides to fashion tech and consumerism simplify the process of finding the right products for your needs. We provide clear, concise information on the latest trends, smart fashion choices, and sustainable options, helping you make informed decisions. Whether you're exploring wearable tech or looking for eco-friendly fashion, our guides offer practical advice to help you choose the perfect product tailored to your style and values.">
   <section>
     <div class="blog py-4">
       <p class="text-white text-sm">
@@ -25,28 +24,22 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
           Post {page.start + 1} through {page.end + 1} of {page.total} total posts
         </em>
       </p>
-      <div
-        class="my-3 grid gap-5 sm:grid-cols-[repeat(auto-fill,minmax(380px,1fr))]"
-      >
+      <div class="my-3 grid gap-5 sm:grid-cols-[repeat(auto-fill,minmax(380px,1fr))]">
         {
-          page.data.slice(0, 4).map((post) => (
-            <div key={post.frontmatter.slug} class="relative flex">
-              <a href={"/guides/" + post.frontmatter.slug} class="block w-full">
-                <div class="relative h-64 w-full bg-gray-300">
-                  <img
-                    class="h-full w-full object-cover"
-                    src={post.frontmatter.image}
-                    alt={post.frontmatter.title}
-                  />
-                  <div class="absolute left-0 top-0 w-3/4 bg-black bg-opacity-50 p-4 text-white">
-                    <h2 class="font-bold text-2xl">{post.frontmatter.title}</h2>
-                    <p class="mt-2">{post.frontmatter.description}</p>
-                    {/* <sub>{post.frontmatter.excerpt}</sub> */}
-                  </div>
-                </div>
-              </a>
+        page.data.slice(0, 4).map((post) => (
+        <div key={post.frontmatter.slug} class="relative flex">
+          <a href={"/guides/" + post.frontmatter.slug} class="block w-full">
+            <div class="relative h-64 w-full bg-gray-300">
+              <img class="h-full w-full object-cover" src={post.frontmatter.image} alt={post.frontmatter.title} />
+              <div class="absolute left-0 top-0 w-3/4 bg-black bg-opacity-50 p-4 text-white">
+                <h2 class="font-bold text-2xl">{post.frontmatter.title}</h2>
+                <p class="mt-2">{post.frontmatter.description}</p>
+                {/* <sub>{post.frontmatter.excerpt}</sub> */}
+              </div>
             </div>
-          ))
+          </a>
+        </div>
+        ))
         }
       </div>
       <!-- <ul
@@ -85,16 +78,9 @@ const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
         }
       </ul> -->
       <div class="mt-12 grid place-content-center">
-        <Pagination
-          firstPage={page.url.prev ? "/blog" : null}
-          previousPage={page.url.prev ? page.url.prev : null}
-          nextPage={page.url.next ? page.url.next : null}
-          lastPage={page.url.next
-            ? `/blog/${Math.ceil(page.total / page.size)}`
-            : null}
-          currentPage={page.currentPage}
-          totalPages={Math.ceil(page.total / page.size)}
-        />
+        <Pagination firstPage={page.url.prev ? "/blog" : null} previousPage={page.url.prev ? page.url.prev : null}
+          nextPage={page.url.next ? page.url.next : null} lastPage={page.url.next ? `/blog/${Math.ceil(page.total /
+          page.size)}` : null} currentPage={page.currentPage} totalPages={Math.ceil(page.total / page.size)} />
       </div>
     </div>
   </section>
