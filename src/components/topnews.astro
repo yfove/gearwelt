@@ -13,76 +13,90 @@ const posts = await Astro.glob("../pages/post/**/*.mdx");
     <div class="horizontalbar">
       <div class="left">
         {
-        posts
-        .sort((a, b) => {
-        const aDate = new Date(a.frontmatter.pubDate);
-        const bDate = new Date(b.frontmatter.pubDate);
-        return bDate - aDate;
-        })
-        // .filter(
-        // (post) =>
-        // post.frontmatter.tags.includes("Exclusive") ||
-        // post.frontmatter.tags.includes("")
-        // )
-        .slice(5, 6)
-        .map((post) => (
-        <li>
-          <a href={"/post/" + post.frontmatter.slug}>
-            <img class="" src={post.frontmatter.image} alt={post.frontmatter.title} />
-            <p class="my-2 font-bold">{post.frontmatter.title}</p>
-            <p class="guide-decription my-2" style="font-size: .8rem;">
-              {post.frontmatter.description}
-            </p>
-            <p class="text-gray-800 text-xs">
-              {post.frontmatter.excerpt}
-            </p>
-            <p class="my-2 font-light" style="font-size: .8rem;">
-              {post.frontmatter.pubDate} | Posted
-              {post.frontmatter.pubTime}
-            </p>
-            <p class="guide-decription float-right my-2 text-gray-800" style="font-size: .7rem;">
-              &#10711; {post.frontmatter.minutesRead}
-            </p>
-          </a>
-        </li>
-        ))
+          posts
+            .sort((a, b) => {
+              const aDate = new Date(a.frontmatter.pubDate);
+              const bDate = new Date(b.frontmatter.pubDate);
+              return bDate - aDate;
+            })
+            .filter(
+              (post) =>
+                post.frontmatter.tags.includes("Exclusive") ||
+                post.frontmatter.tags.includes("")
+            )
+            .slice(7, 8)
+            .map((post) => (
+              <li>
+                <a href={"/post/" + post.frontmatter.slug}>
+                  <img
+                    class=""
+                    src={post.frontmatter.image}
+                    alt={post.frontmatter.title}
+                  />
+                  <p class="my-2 font-bold">{post.frontmatter.title}</p>
+                  <p class="guide-decription my-2" style="font-size: .8rem;">
+                    {post.frontmatter.description}
+                  </p>
+                  <p class="text-gray-800 text-xs">
+                    {post.frontmatter.excerpt}
+                  </p>
+                  <p class="my-2 font-light" style="font-size: .8rem;">
+                    {post.frontmatter.pubDate} | Posted
+                    {post.frontmatter.pubTime}
+                  </p>
+                  <p
+                    class="guide-decription float-right my-2 text-gray-800"
+                    style="font-size: .7rem;"
+                  >
+                    &#10711; {post.frontmatter.minutesRead}
+                  </p>
+                </a>
+              </li>
+            ))
         }
       </div>
       <div class="right">
         {
-        posts
-        .sort((a, b) => {
-        const aDate = new Date(a.frontmatter.pubDate);
-        const bDate = new Date(b.frontmatter.pubDate);
-        return bDate - aDate;
-        })
-        // .filter(
-        // (post) =>
-        // post.frontmatter.tags.includes("Trends") ||
-        // post.frontmatter.tags.includes("Exclusive")
-        // )
-        .slice(6, 8)
-        .map((post) => (
-        <li>
-          <a href={"/post/" + post.frontmatter.slug}>
-            <img class="h-40 w-full object-cover" src={post.frontmatter.image} alt={post.frontmatter.title} />
-            <p class="my-2 font-bold">{post.frontmatter.title}</p>
-            <p class="guide-decription my-2" style="font-size: .8rem;">
-              {post.frontmatter.description}
-            </p>
-            <p class="text-gray-800 text-xs">
-              {post.frontmatter.excerpt}
-            </p>
-            <p class="my-2 font-light" style="font-size: .8rem;">
-              {post.frontmatter.pubDate} | Posted
-              {post.frontmatter.pubTime}
-            </p>
-            <p class="guide-decription float-right my-2 text-gray-800" style="font-size: .7rem;">
-              &#10711; {post.frontmatter.minutesRead}
-            </p>
-          </a>
-        </li>
-        ))
+          posts
+            .sort((a, b) => {
+              const aDate = new Date(a.frontmatter.pubDate);
+              const bDate = new Date(b.frontmatter.pubDate);
+              return bDate - aDate;
+            })
+            // .filter(
+            // (post) =>
+            // post.frontmatter.tags.includes("Trends") ||
+            // post.frontmatter.tags.includes("Exclusive")
+            // )
+            .slice(8, 10)
+            .map((post) => (
+              <li>
+                <a href={"/post/" + post.frontmatter.slug}>
+                  <img
+                    class="h-40 w-full object-cover"
+                    src={post.frontmatter.image}
+                    alt={post.frontmatter.title}
+                  />
+                  <p class="my-2 font-bold">{post.frontmatter.title}</p>
+                  <p class="guide-decription my-2" style="font-size: .8rem;">
+                    {post.frontmatter.description}
+                  </p>
+                  <p class="text-gray-800 text-xs">
+                    {post.frontmatter.excerpt}
+                  </p>
+                  <p class="my-2 font-light" style="font-size: .8rem;">
+                    {post.frontmatter.pubDate} | Posted
+                    {post.frontmatter.pubTime}
+                  </p>
+                  <p
+                    class="guide-decription float-right my-2 text-gray-800"
+                    style="font-size: .7rem;"
+                  >
+                    &#10711; {post.frontmatter.minutesRead}
+                  </p>
+                </a>
+              </li>
+            ))
         }
       </div>
       <!-- Loop with images -->
