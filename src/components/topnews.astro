@@ -19,11 +19,11 @@ const posts = await Astro.glob("../pages/post/**/*.mdx");
               const bDate = new Date(b.frontmatter.pubDate);
               return bDate - aDate;
             })
-            .filter(
-              (post) =>
-                post.frontmatter.tags.includes("Exclusive") ||
-                post.frontmatter.tags.includes("")
-            )
+            // .filter(
+            //   (post) =>
+            //     post.frontmatter.tags.includes("Exclusive") ||
+            //     post.frontmatter.tags.includes("")
+            // )
             .slice(7, 8)
             .map((post) => (
               <li>
