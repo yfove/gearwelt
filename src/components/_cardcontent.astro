@@ -5,8 +5,9 @@ const { post, imageClass = "" } = Astro.props;
 
 <li class="flex flex-col border-2 border-stone-400 text-center">
   <a href={"/post/" + post.frontmatter.slug} class="flex flex-col overflow-hidden">
-    <img class={`w-full object-cover ${imageClass || "h-64" } transform transition-transform duration-200 ease-in-out
-      hover:scale-105`} src={post.frontmatter.image} alt={post.frontmatter.title} />
+    <img class={`w-full object-cover ${imageClass || "h-60" } max-h-96 transform transition-transform duration-200
+      ease-in-out hover:scale-105`} src={post.frontmatter.image} alt={post.frontmatter.title} />
+
   </a>
 
   <div class="mt-2 space-x-2">
