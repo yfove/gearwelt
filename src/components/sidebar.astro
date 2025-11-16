@@ -41,16 +41,28 @@ const guides = await Astro.glob("../pages/guides/**/*.mdx");
       })
       .slice(0, 6)
       .map((post) => (
-      <li class="py-2">
-        <a href={"/post/" + post.frontmatter.slug} class="block">
-          <img src={post.frontmatter.image} alt={post.frontmatter.title} class="" />
-          <small class="font-bold">{post.frontmatter.title}</small>
-          <br />
-          <small class="text-gray-900">
-            {post.frontmatter.pubDate} {post.frontmatter.pubTime}
-          </small>
-          <small class="text-gray-600">{post.frontmatter.author}</small>
-        </a>
+      <li class="">
+        <ul class="list-none p-0 m-0 flex justify-center">
+          <li class="py-2 flex justify-center items-center">
+            <a href={"/post/" + post.frontmatter.slug} class="block text-center">
+              <!-- Image with fixed width and height to make it square -->
+              <img src={post.frontmatter.image} alt={post.frontmatter.title}
+                class="w-40 h-40 object-cover rounded-md mx-auto" />
+
+              <!-- Post Title -->
+              <small class="font-bold block">{post.frontmatter.title}</small>
+
+              <!-- Post Date and Time -->
+              <small class="text-gray-900 block">
+                {post.frontmatter.pubDate}
+              </small>
+
+              <!-- Post Author -->
+              <!-- <small class="text-gray-600 block">{post.frontmatter.author}</small> -->
+            </a>
+          </li>
+        </ul>
+
       </li>
       ))
       }
@@ -64,7 +76,7 @@ const guides = await Astro.glob("../pages/guides/**/*.mdx");
       const bDate = new Date(b.frontmatter.pubDate);
       return bDate - aDate;
       })
-      .slice(5, 7)
+      .slice(6, 8)
       .map((post) => (
       <li class="pb-3">
         <a href={"/post/" + post.frontmatter.slug} class="block">
