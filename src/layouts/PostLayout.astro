@@ -62,8 +62,8 @@ export const prerender = true;
 
 <body class="h-min bg-white text-white">
   <Header />
-  <div class="mx-auto flex min-h-screen max-w-5xl border mt-2 p-5 pt-10 shadow-md">
-    <main class="w-3/4 font-normal tracking-wider text-gray-900">
+  <div class="mx-auto flex min-h-screen max-w-5xl border mt-2 p-5 pt-10 shadow-md flex-col md:flex-row">
+    <main class="w-full md:w-3/4 font-normal tracking-wider text-gray-900">
       <a href="javascript:history.back()" class="text-black">Back to Previous</a>
       <a class="text-black">| {title}</a>
       <article class="mdx">
@@ -94,7 +94,7 @@ export const prerender = true;
             tags &&
             tags.map((tag, index) => (
             <span key={index} class="text-sm">
-              <a href={`/tags/${tag}`} style="text-decoration: none; color: #3c3734">
+              <a href={`/tags/${tag.toLowerCase()}`} style="text-decoration: none; color: #3c3734">
                 {tag}
               </a>
               {index < tags.length - 1 && ( <span class="mx-1 text-stone-400">|</span>
@@ -132,7 +132,7 @@ export const prerender = true;
       <RelatedProducts tags={tags} relatedPosts={relatedPosts} />
     </main>
 
-    <div class="sidebar-container w-1/4  flex flex-col">
+    <div class="sidebar-container md:w-1/4 w-full hidden md:flex flex-col">
       <Sidebar />
     </div>
   </div>
