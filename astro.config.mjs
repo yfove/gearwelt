@@ -28,6 +28,11 @@ export default defineConfig({
     ssr: {
       noExternal: ["accessible-astro-components"],
     },
+    server: {
+      watch: {
+        usePolling: true, // Forces the server to check for file changes
+      },
+    },
   },
   markdown: {
     remarkPlugins: [remarkReadingTime, remarkExcerpt],

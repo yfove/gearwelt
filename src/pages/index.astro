@@ -21,59 +21,61 @@ const description = "Welcome to GearWelt";
 
 <!DOCTYPE html>
 <html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/watch.svg" type="image/svg+xml" />
+    <meta name="generator" content={generator} />
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width" />
-  <link rel="icon" href="/watch.svg" type="image/svg+xml" />
-  <meta name="generator" content={generator} />
+    <title>GearWelt | Where passion meets precision</title>
+    <meta name="description" content={description} />
 
-  <title>GearWelt | Where passion meets precision</title>
-  <meta name="description" content={description} />
+    <!-- social media -->
+    <meta property="og:title" content="Astro" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- social media -->
-  <meta property="og:title" content="Astro" />
-  <meta property="og:type" content="website" />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content={image} />
-  <meta property="og:url" content={site} />
-  <meta name="twitter:card" content="summary_large_image" />
+    <!-- fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Josefin+Sans:ital,wght@1,300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-  <!-- fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@0;1&display=swap" rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Josefin+Sans:ital,wght@1,300&display=swap"
-    rel="stylesheet" />
-</head>
+  <body class="h-full bg-white selection:bg-secondary selection:text-white">
+    <!-- <Header /> -->
+    <Header4 />
+    <div class="space-y-14">
+      <Hero2 />
+    </div>
 
-<body class="h-full bg-white selection:bg-secondary selection:text-white">
-  <!-- <Header /> -->
-  <Header4 />
-  <div class="space-y-14">
-    <Hero2 />
-  </div>
+    <Categorybar />
+    <Topsingle />
+    <Adhorizontal />
+    <Topdouble />
+    <Topnews />
 
-  <Categorybar />
-  <Topsingle />
-  <Adhorizontal />
-  <Topdouble />
-  <Topnews />
+    <Toptriple />
+    <!-- <Topguides /> -->
 
-  <Toptriple />
-  <Topguides />
+    <!-- <Guidesmin /> -->
+    <!-- <Splash class="h-min" /> -->
+    <!-- <Intro /> -->
+    <!-- <Features /> -->
+    <!-- <Cta /> -->
+    <!-- <Compatibility /> -->
+    <!-- <Showcase /> -->
 
-  <!-- <Guidesmin /> -->
-  <!-- <Splash class="h-min" /> -->
-  <!-- <Intro /> -->
-  <!-- <Features /> -->
-  <!-- <Cta /> -->
-  <!-- <Compatibility /> -->
-  <!-- <Showcase /> -->
-
-  <Contentcta />
-  <Footer />
-</body>
-
+    <Contentcta />
+    <Footer />
+  </body>
 </html>
 
 <!-- initialize theme -->
